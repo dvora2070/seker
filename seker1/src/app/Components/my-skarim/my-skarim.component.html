@@ -1,0 +1,41 @@
+
+ <p>my-skarim works!</p>
+<head>
+    <style>
+        table {
+          border: 3px solid black;
+          font-weight: 200;
+          width: 100%;
+          margin-top: 20px;
+        }
+         th {
+          border: 3px solid black;
+          text-align: center;
+          padding: 10px;
+    
+        };
+         td {
+          border: 1px solid black;
+          text-align: center;  
+          padding:  10px;
+    
+        }
+        </style>
+    </head>
+<body style="text-align: center;">
+<h2 >טבלת סקרים לנסקר  </h2>
+<table style="text-align: center;">
+    <th *ngFor = "let column of headers">
+        {{column}}
+    </th>
+    <div class="all-users" *ngFor="let row of sekers"> 
+         <div >
+            <td>{{row.code_skr}}</td>
+            <td>{{row.name_skr}}</td>
+            <td>{{row.startdate_skr}}</td>
+            <td>{{row.lastdate_skr}}</td>
+        </div>
+    </div>   
+</table>
+</body>
+

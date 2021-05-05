@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="project_skrModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AnsOfAsked">
+    <Key>
+      <PropertyRef Name="kod_quest" />
+      <PropertyRef Name="kod_asked" />
+    </Key>
+    <Property Name="kod_quest" Type="Int32" Nullable="false" />
+    <Property Name="kod_asked" Type="Int32" Nullable="false" />
+    <Property Name="kod_ans" Type="Int32" />
+    <Property Name="answer" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Asked" Relationship="Self.FK__AnsOfAske__kod_a__47DBAE45" FromRole="AnsOfAsked" ToRole="Asked" />
+    <NavigationProperty Name="AnsOfQuest" Relationship="Self.FK__AnsOfAske__kod_a__48CFD27E" FromRole="AnsOfAsked" ToRole="AnsOfQuest" />
+    <NavigationProperty Name="Questions" Relationship="Self.FK__AnsOfAske__kod_q__46E78A0C" FromRole="AnsOfAsked" ToRole="Questions" />
+  </EntityType>
+  <EntityType Name="AnsOfQuest">
+    <Key>
+      <PropertyRef Name="kod_ans" />
+    </Key>
+    <Property Name="kod_ans" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kod_quest" Type="Int32" />
+    <Property Name="text_ans" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="AnsOfAsked" Relationship="Self.FK__AnsOfAske__kod_a__48CFD27E" FromRole="AnsOfQuest" ToRole="AnsOfAsked" />
+    <NavigationProperty Name="Questions" Relationship="Self.FK__AnsOfQues__kod_q__440B1D61" FromRole="AnsOfQuest" ToRole="Questions" />
+  </EntityType>
+  <EntityType Name="Asked">
+    <Key>
+      <PropertyRef Name="kod_asked" />
+    </Key>
+    <Property Name="kod_asked" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name_asked" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="email_asked" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="phone_asked" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AnsOfAsked" Relationship="Self.FK__AnsOfAske__kod_a__47DBAE45" FromRole="Asked" ToRole="AnsOfAsked" />
+  </EntityType>
+  <EntityType Name="Questions">
+    <Key>
+      <PropertyRef Name="kod_quest" />
+    </Key>
+    <Property Name="kod_quest" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kod_skr" Type="Int32" />
+    <Property Name="num_quest" Type="Int32" />
+    <Property Name="text_quest" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="type_ans" Type="Int32" />
+    <Property Name="ismust_quest" Type="Binary" MaxLength="50" FixedLength="true" />
+    <NavigationProperty Name="AnsOfAsked" Relationship="Self.FK__AnsOfAske__kod_q__46E78A0C" FromRole="Questions" ToRole="AnsOfAsked" />
+    <NavigationProperty Name="AnsOfQuest" Relationship="Self.FK__AnsOfQues__kod_q__440B1D61" FromRole="Questions" ToRole="AnsOfQuest" />
+    <NavigationProperty Name="TypeAnswers" Relationship="Self.FK__Questions__type___412EB0B6" FromRole="Questions" ToRole="TypeAnswers" />
+    <NavigationProperty Name="Skarim" Relationship="project_skrModel.FK__Questions__kod_s__403A8C7D" FromRole="Questions" ToRole="Skarim" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TypeAnswers">
+    <Key>
+      <PropertyRef Name="kod_type" />
+    </Key>
+    <Property Name="kod_type" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name_type" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Questions" Relationship="Self.FK__Questions__type___412EB0B6" FromRole="TypeAnswers" ToRole="Questions" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="kod_user" />
+    </Key>
+    <Property Name="kod_user" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name_user" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="password_user" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="email_user" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Skarim" Relationship="project_skrModel.FK__Skarim__kod_user__3B75D760" FromRole="Users" ToRole="Skarim" />
+  </EntityType>
+  <Association Name="FK__AnsOfAske__kod_a__47DBAE45">
+    <End Role="Asked" Type="Self.Asked" Multiplicity="1" />
+    <End Role="AnsOfAsked" Type="Self.AnsOfAsked" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Asked">
+        <PropertyRef Name="kod_asked" />
+      </Principal>
+      <Dependent Role="AnsOfAsked">
+        <PropertyRef Name="kod_asked" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AnsOfAske__kod_a__48CFD27E">
+    <End Role="AnsOfQuest" Type="Self.AnsOfQuest" Multiplicity="0..1" />
+    <End Role="AnsOfAsked" Type="Self.AnsOfAsked" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnsOfQuest">
+        <PropertyRef Name="kod_ans" />
+      </Principal>
+      <Dependent Role="AnsOfAsked">
+        <PropertyRef Name="kod_ans" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AnsOfAske__kod_q__46E78A0C">
+    <End Role="Questions" Type="Self.Questions" Multiplicity="1" />
+    <End Role="AnsOfAsked" Type="Self.AnsOfAsked" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Questions">
+        <PropertyRef Name="kod_quest" />
+      </Principal>
+      <Dependent Role="AnsOfAsked">
+        <PropertyRef Name="kod_quest" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AnsOfQues__kod_q__440B1D61">
+    <End Role="Questions" Type="Self.Questions" Multiplicity="0..1" />
+    <End Role="AnsOfQuest" Type="Self.AnsOfQuest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Questions">
+        <PropertyRef Name="kod_quest" />
+      </Principal>
+      <Dependent Role="AnsOfQuest">
+        <PropertyRef Name="kod_quest" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Questions__type___412EB0B6">
+    <End Role="TypeAnswers" Type="Self.TypeAnswers" Multiplicity="0..1" />
+    <End Role="Questions" Type="Self.Questions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeAnswers">
+        <PropertyRef Name="kod_type" />
+      </Principal>
+      <Dependent Role="Questions">
+        <PropertyRef Name="type_ans" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="project_skrEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AnsOfAsked" EntityType="Self.AnsOfAsked" />
+    <EntitySet Name="AnsOfQuest" EntityType="Self.AnsOfQuest" />
+    <EntitySet Name="Asked" EntityType="Self.Asked" />
+    <EntitySet Name="Questions" EntityType="Self.Questions" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="TypeAnswers" EntityType="Self.TypeAnswers" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <AssociationSet Name="FK__AnsOfAske__kod_a__47DBAE45" Association="Self.FK__AnsOfAske__kod_a__47DBAE45">
+      <End Role="Asked" EntitySet="Asked" />
+      <End Role="AnsOfAsked" EntitySet="AnsOfAsked" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AnsOfAske__kod_a__48CFD27E" Association="Self.FK__AnsOfAske__kod_a__48CFD27E">
+      <End Role="AnsOfQuest" EntitySet="AnsOfQuest" />
+      <End Role="AnsOfAsked" EntitySet="AnsOfAsked" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AnsOfAske__kod_q__46E78A0C" Association="Self.FK__AnsOfAske__kod_q__46E78A0C">
+      <End Role="Questions" EntitySet="Questions" />
+      <End Role="AnsOfAsked" EntitySet="AnsOfAsked" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AnsOfQues__kod_q__440B1D61" Association="Self.FK__AnsOfQues__kod_q__440B1D61">
+      <End Role="Questions" EntitySet="Questions" />
+      <End Role="AnsOfQuest" EntitySet="AnsOfQuest" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Questions__type___412EB0B6" Association="Self.FK__Questions__type___412EB0B6">
+      <End Role="TypeAnswers" EntitySet="TypeAnswers" />
+      <End Role="Questions" EntitySet="Questions" />
+    </AssociationSet>
+    <EntitySet Name="Skarim" EntityType="project_skrModel.Skarim" />
+    <AssociationSet Name="FK__Questions__kod_s__403A8C7D" Association="project_skrModel.FK__Questions__kod_s__403A8C7D">
+      <End Role="Skarim" EntitySet="Skarim" />
+      <End Role="Questions" EntitySet="Questions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Skarim__kod_user__3B75D760" Association="project_skrModel.FK__Skarim__kod_user__3B75D760">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Skarim" EntitySet="Skarim" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Skarim">
+    <Key>
+      <PropertyRef Name="kod_skr" />
+    </Key>
+    <Property Name="kod_skr" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name_skr" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="kod_user" Type="Int32" />
+    <Property Name="startdate_skr" Type="DateTime" Precision="0" />
+    <Property Name="lastdate_skr" Type="DateTime" Precision="0" />
+    <Property Name="logo_skr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="jpg_skr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="bgcolor_skr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fountcolor_skr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Questions" Relationship="project_skrModel.FK__Questions__kod_s__403A8C7D" FromRole="Skarim" ToRole="Questions" />
+    <NavigationProperty Name="Users" Relationship="project_skrModel.FK__Skarim__kod_user__3B75D760" FromRole="Skarim" ToRole="Users" />
+  </EntityType>
+  <Association Name="FK__Questions__kod_s__403A8C7D">
+    <End Type="project_skrModel.Skarim" Role="Skarim" Multiplicity="0..1" />
+    <End Type="project_skrModel.Questions" Role="Questions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Skarim">
+        <PropertyRef Name="kod_skr" />
+      </Principal>
+      <Dependent Role="Questions">
+        <PropertyRef Name="kod_skr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Skarim__kod_user__3B75D760">
+    <End Type="project_skrModel.Users" Role="Users" Multiplicity="0..1" />
+    <End Type="project_skrModel.Skarim" Role="Skarim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="kod_user" />
+      </Principal>
+      <Dependent Role="Skarim">
+        <PropertyRef Name="kod_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

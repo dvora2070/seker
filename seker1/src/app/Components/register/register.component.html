@@ -1,0 +1,19 @@
+
+<body  style="text-align:right; float:right; margin-top: 130px;position:static;">
+    <p>register works!</p>
+    <!-- <p>
+     משתמש לא קיים???
+   הרשם עכשיו!
+</p> -->
+<div id="idRegiste" style="align-items:center;">
+    <div >
+        <a class="nav-item nav-link"  [routerLink]="['/login']"> כניסה </a>
+        <a class="nav-item nav-link active"  [routerLink]="['/register']">   הרשמה </a>
+    </div>
+    <input type="text" placeholder="שם משתמש" [(ngModel)]="user" ><br>
+    <input type="email" placeholder="אימייל" [(ngModel)]="mail" ><br>
+    <input type="password" placeholder="צור סיסמא חדשה"  [(ngModel)]="password" ><br>
+    <input type="password" placeholder="אשר סיסמא חדשה"  [(ngModel)]="password2" ><br>
+    <input type="submit" value="הרשמה" (click)="OnRegiste()"><br><br>
+</div>
+    </body>

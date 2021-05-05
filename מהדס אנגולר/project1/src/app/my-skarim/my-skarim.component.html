@@ -1,0 +1,17 @@
+<body  style="text-align:right; float:right">
+<h2>טבלת סקרים לנסקר  </h2>
+
+<table style="text-align: center;">
+    <th *ngFor = "let column of headers">
+        {{column}}
+    </th>
+    <div class="all-users" *ngFor="let row of sekers">
+       <div *ngIf="row.codeuser==me.codeuser">
+            <td>{{row.id}}</td>
+            <td>{{row.name}}</td>
+            <td>{{row.startdate}}</td>
+            <td>{{row.enddate}}</td>  
+        </div>
+    </div>   
+</table>
+

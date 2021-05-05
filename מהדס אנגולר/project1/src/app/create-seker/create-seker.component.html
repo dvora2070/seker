@@ -1,0 +1,21 @@
+בחירת צבע רקע <input [disabled]="isDisabled" type="color"  [(ngModel)]="colorSeker.gcolor"><br><br>
+בחירת צבע כיתוב <input type="color"  [(ngModel)]="colorSeker.fcolor"><br><br>
+<input type="text" [(ngModel)]="colorSeker.text">
+<!-- <div><input type="radio" class="inputDesign" name="1">number 1</div><br><br>
+<div><input type="radio" class="inputDesign" name="1">number 2</div><br><br>
+<div><input type="radio" class="inputDesign" name="1">number 3</div><br><br> -->
+
+
+<div>
+    תמונת רקע<br>
+<input [disabled]="colorSeker.gcolor != ''" type="file" (change)="onSelectFile($event)">
+</div>
+
+<div>
+    לוגו<br>
+<input type="file" (change)="onSelectFile1($event)" >
+</div>
+
+<div>
+    <input type="button" value="הצג" routerLink="/create/">
+</div>

@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="project_skrModelStoreContainer" CdmEntityContainer="project_skrEntities">
+    <EntitySetMapping Name="AnsOfAsked">
+      <EntityTypeMapping TypeName="project_skrModel.AnsOfAsked">
+        <MappingFragment StoreEntitySet="AnsOfAsked">
+          <ScalarProperty Name="kod_quest" ColumnName="kod_quest" />
+          <ScalarProperty Name="kod_asked" ColumnName="kod_asked" />
+          <ScalarProperty Name="kod_ans" ColumnName="kod_ans" />
+          <ScalarProperty Name="answer" ColumnName="answer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AnsOfQuest">
+      <EntityTypeMapping TypeName="project_skrModel.AnsOfQuest">
+        <MappingFragment StoreEntitySet="AnsOfQuest">
+          <ScalarProperty Name="kod_ans" ColumnName="kod_ans" />
+          <ScalarProperty Name="kod_quest" ColumnName="kod_quest" />
+          <ScalarProperty Name="text_ans" ColumnName="text_ans" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Asked">
+      <EntityTypeMapping TypeName="project_skrModel.Asked">
+        <MappingFragment StoreEntitySet="Asked">
+          <ScalarProperty Name="kod_asked" ColumnName="kod_asked" />
+          <ScalarProperty Name="name_asked" ColumnName="name_asked" />
+          <ScalarProperty Name="email_asked" ColumnName="email_asked" />
+          <ScalarProperty Name="phone_asked" ColumnName="phone_asked" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Questions">
+      <EntityTypeMapping TypeName="project_skrModel.Questions">
+        <MappingFragment StoreEntitySet="Questions">
+          <ScalarProperty Name="kod_quest" ColumnName="kod_quest" />
+          <ScalarProperty Name="kod_skr" ColumnName="kod_skr" />
+          <ScalarProperty Name="num_quest" ColumnName="num_quest" />
+          <ScalarProperty Name="text_quest" ColumnName="text_quest" />
+          <ScalarProperty Name="type_ans" ColumnName="type_ans" />
+          <ScalarProperty Name="ismust_quest" ColumnName="ismust_quest" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="project_skrModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeAnswers">
+      <EntityTypeMapping TypeName="project_skrModel.TypeAnswers">
+        <MappingFragment StoreEntitySet="TypeAnswers">
+          <ScalarProperty Name="kod_type" ColumnName="kod_type" />
+          <ScalarProperty Name="name_type" ColumnName="name_type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="project_skrModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="kod_user" ColumnName="kod_user" />
+          <ScalarProperty Name="name_user" ColumnName="name_user" />
+          <ScalarProperty Name="password_user" ColumnName="password_user" />
+          <ScalarProperty Name="email_user" ColumnName="email_user" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Skarim">
+      <EntityTypeMapping TypeName="project_skrModel.Skarim">
+        <MappingFragment StoreEntitySet="Skarim">
+          <ScalarProperty Name="fountcolor_skr" ColumnName="fountcolor_skr" />
+          <ScalarProperty Name="bgcolor_skr" ColumnName="bgcolor_skr" />
+          <ScalarProperty Name="jpg_skr" ColumnName="jpg_skr" />
+          <ScalarProperty Name="logo_skr" ColumnName="logo_skr" />
+          <ScalarProperty Name="lastdate_skr" ColumnName="lastdate_skr" />
+          <ScalarProperty Name="startdate_skr" ColumnName="startdate_skr" />
+          <ScalarProperty Name="kod_user" ColumnName="kod_user" />
+          <ScalarProperty Name="name_skr" ColumnName="name_skr" />
+          <ScalarProperty Name="kod_skr" ColumnName="kod_skr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

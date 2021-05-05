@@ -1,0 +1,11 @@
+D:\פרויקט\Server\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\פרויקט\Server\DAL\bin\Debug\DAL.dll.config
+D:\פרויקט\Server\DAL\bin\Debug\DAL.dll
+D:\פרויקט\Server\DAL\bin\Debug\DAL.pdb
+D:\פרויקט\Server\DAL\bin\Debug\EntityFramework.dll
+D:\פרויקט\Server\DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\פרויקט\Server\DAL\bin\Debug\EntityFramework.xml
+D:\פרויקט\Server\DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\פרויקט\Server\DAL\obj\Debug\DAL.csproj.CopyComplete
+D:\פרויקט\Server\DAL\obj\Debug\DAL.dll
+D:\פרויקט\Server\DAL\obj\Debug\DAL.pdb

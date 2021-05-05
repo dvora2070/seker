@@ -1,0 +1,15 @@
+enter background:  <input [disabled]="isDisabled" type="color"  [(ngModel)]="colorSeker.gcolor"><br><br>
+enter fount color: <input type="color"  [(ngModel)]="colorSeker.fcolor"><br><br>
+<input type="text" [(ngModel)]="colorSeker.text">
+<div><input type="radio" class="inputDesign" name="1">number 1</div><br><br>
+<div><input type="radio" class="inputDesign" name="1">number 2</div><br><br>
+<div><input type="radio" class="inputDesign" name="1">number 3</div><br><br>
+<div>
+    <input type="button" value="create" routerLink="/create/">
+</div>
+<br><br>
+
+<input [disabled]="colorSeker.gcolor != ''" type="file"  (change)="onSelectFile($event)">
+
+
+<input height="50px" type="file" (change)="onSelectFile1($event)" >

@@ -1,0 +1,18 @@
+
+
+<body  style="text-align:right; float:right;margin-top: 130px;position: static;">
+<p>login works!</p>
+    <div id="idlogin" style="align-items:center">
+        <div >
+            <a class="nav-item nav-link active"  [routerLink]="['/login']"> כניסה </a>
+            <a class="nav-item nav-link"  [routerLink]="['/register']">   הרשמה </a>
+        </div>
+        <input type="text" placeholder="שם משתמש" [(ngModel)]="user" ><br>
+        <input type="email" placeholder="מייל" [(ngModel)]="mail" ><br>
+        <input type="password" placeholder="סיסמא"  [(ngModel)]="password" ><br>
+        <input type="submit" value="כניסה" (click)="OnLogIn()"><br><br>
+    </div>
+</body>
+
+
+

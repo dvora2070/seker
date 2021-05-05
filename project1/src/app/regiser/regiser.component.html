@@ -1,0 +1,15 @@
+<h1>הרשם</h1>
+
+
+<div id="idregiste" style="align-items:center;">
+    <input type="text" placeholder="שם משתמש" [(ngModel)]="newUser.name_user"><br>
+    <input type="password" placeholder="סיסמא" [(ngModel)]="newUser.password_user"><br>
+    <input type="text" placeholder="אימייל" [(ngModel)]="newUser.email_user"><br>
+    <input type="submit" value="הרשמה" (click)="OnRegister()"><br><br>
+</div>
+<div>
+    <h1>כל המשתמשים</h1>
+    <div *ngFor="let user of users">
+        <h2>{{user.name_user}}</h2>
+    </div>
+</div>

@@ -14,18 +14,19 @@ export class RegiserComponent implements OnInit {
 
   users: Users[] = [];
   ngOnInit() {
-    this.getAllUsers();
+ 
   }
   OnRegister() {
     this.userService.register(this.newUser).subscribe(x => {
       console.log(x);
-      this.getAllUsers();
+      localStorage.setItem("user", JSON.stringify(x));
+      this.userService.loginUser.next();
 
     });
   }
-  getAllUsers() {
-    this.userService.getAllUsers().subscribe(xx => {
-      this.users = xx;
-    });
-  }
+  // getAllUsers() {
+  //   this.userService.getAllUsers().subscribe(xx => {
+  //     this.users = xx;
+  //   });
+  // }
 }

@@ -25,7 +25,7 @@ namespace BL
         {
             using (project_skrEntities db = new project_skrEntities())
             {
-                var skarim = db.Skarim.Where(x => x.kod_user == userId).ToList();
+                var skarim = db.Skarim.Where(x => x.kod_user == userId).OrderByDescending(x => x.startdate_skr).ToList();
                 return SkarimConvertion.convertToListDto(skarim);
             }
         }
@@ -33,7 +33,7 @@ namespace BL
         {
             using (project_skrEntities db = new project_skrEntities())
             {
-                var skarim = db.Skarim.FirstOrDefault(x => x.kod_user == id);
+                var skarim = db.Skarim.FirstOrDefault(x => x.kod_skr == id);
                 return SkarimConvertion.ConvertToDto(skarim);
             }
         }
@@ -75,6 +75,16 @@ namespace BL
             }
         }
 
+        public static bool UploadImage(int sekerId, string fileName)
+        {
+            using (project_skrEntities db = new project_skrEntities())
+            {
+                var seker = db.Skarim.FirstOrDefault(x => x.kod_skr == sekerId);
+                seker.logo_skr = fileName;
+                db.SaveChanges();
+                return true;
+            }
+        }
     }
 }
 

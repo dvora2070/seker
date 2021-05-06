@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule} from  '@angular/forms';
-
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CreateQuestionComponent } from './create-question/create-question.component';
@@ -11,6 +12,11 @@ import { NgModule } from '@angular/core';
 import { CreateComponent } from './create/create.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SkarimComponent } from './skarim/skarim.component';
+import { AllSkarimComponent } from './all-skarim/all-skarim.component';
+import { AllUsersComponent } from './all-users/all-users.component';
+import { SekerResultsComponent } from './seker-results/seker-results.component';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,16 +25,25 @@ import { SkarimComponent } from './skarim/skarim.component';
     RegiserComponent,
     CreateSekerComponent,
     CreateComponent,
-    SkarimComponent
+    SkarimComponent,
+    AllSkarimComponent,
+    AllUsersComponent,
+    SekerResultsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatIconModule,
+    MatDialogModule,
+    BrowserAnimationsModule,
+
     
   ],
-  providers: [],
+  providers: [  { provide: MAT_DIALOG_DATA, useValue: {} },
+    { provide: MatDialogRef, useValue: {} },
+    {  provide: MAT_DATE_LOCALE, useValue: 'he-IL'},],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

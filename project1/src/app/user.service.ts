@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Users } from './models/user.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
+  loginUser = new Subject<boolean>();
   constructor(private http: HttpClient) { }
 
   register(user: Users){

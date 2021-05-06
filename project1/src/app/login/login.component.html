@@ -1,6 +1,15 @@
-<h1>כניסה</h1>
-<input type="text" value="user name" [(ngModel)]="userName"><br><br>
-<input type="password" value="password" [(ngModel)]="password"><br><br>
-<button (click)="login()">כניסה</button>
+<div class="form-wrapper">
+    <h1>כניסה</h1>
+    <br>
+    <label for="name">שם משתמש</label>
+    <br>
+    <input type="text" value="user name" id="name" name="name" [(ngModel)]="userName"><br>
+    <label for="password">סיסמא</label>
+    <br>
+    <input type="password" id="password" name="password" value="password" [(ngModel)]="password"><br><br>
+    <button (click)="login()" class="btn-color">כניסה</button>
 
+    <br><br>
 
+    <a routerLink='/register'>לא מחובר? הרשם כאן</a>
+</div>

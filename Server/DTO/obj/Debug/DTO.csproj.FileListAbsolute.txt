@@ -1,6 +1,0 @@
-D:\פרויקט\Server\DTO\bin\Debug\DTO.dll
-D:\פרויקט\Server\DTO\bin\Debug\DTO.pdb
-D:\פרויקט\Server\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
-D:\פרויקט\Server\DTO\obj\Debug\DTO.dll
-D:\פרויקט\Server\DTO\obj\Debug\DTO.pdb
-D:\פרויקט\Server\DTO\obj\Debug\DTO.csprojAssemblyReference.cache

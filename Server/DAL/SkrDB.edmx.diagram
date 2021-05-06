@@ -9,7 +9,6 @@
         <EntityTypeShape EntityType="project_skrModel.AnsOfQuest" Width="1.5" PointX="7.5" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="project_skrModel.Asked" Width="1.5" PointX="7.25" PointY="3" IsExpanded="true" />
         <EntityTypeShape EntityType="project_skrModel.Questions" Width="1.5" PointX="5.25" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="project_skrModel.sysdiagrams" Width="1.5" PointX="10.125" PointY="10" IsExpanded="true" />
         <EntityTypeShape EntityType="project_skrModel.TypeAnswers" Width="1.5" PointX="3.125" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="project_skrModel.Users" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
         <AssociationConnector Association="project_skrModel.FK__AnsOfAske__kod_a__47DBAE45" ManuallyRouted="false" />

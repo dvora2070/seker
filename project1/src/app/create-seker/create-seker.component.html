@@ -1,4 +1,67 @@
-enter background:  <input [disabled]="isDisabled" type="color"  [(ngModel)]="colorSeker.gcolor"><br><br>
+<div class="form-wrapper-modal">
+
+    <h1 *ngIf="data && data.sekerId;else:newSeker">עדכון סקר</h1>
+    <ng-template #newSeker>
+        <h1>הוספת סקר</h1>
+    </ng-template>
+    <br>
+    <label>שם</label>
+    <br><input type="text" [(ngModel)]="seker.name_skr" required>
+    <small class="error" *ngIf="!seker.name_skr"> חובה להזין שם</small>
+    <label>תאריך התחלה</label>
+    <br><input type="date" [(ngModel)]="seker.startdate_skr" required>
+    <small class="error" *ngIf="!seker.startdate_skr"> חובה להזין תאריך</small>
+    <label>תאריך סיום</label>
+    <br><input type="date" [(ngModel)]="seker.lastdate_skr" required>
+    <small class="error" *ngIf="!seker.lastdate_skr"> חובה להזין תאריך</small>
+    <label>לוגו</label>
+    <div class="custom-file-upload-wrapper">
+
+        <div class="custom-file-upload-name-wrapper">
+            <label class="custom-file-upload-name" *ngIf="file">{{file.name}}</label>
+            <label class="custom-file-upload-name" *ngIf="!file">לא נבחרה תמונה</label>
+        </div>
+        <label class="custom-file-upload" for="file-input">
+              <mat-icon>insert_drive_file</mat-icon>
+              <input type="file"/>
+              טען תמונה
+            </label>
+    </div>
+
+    <input id="file-input" type="file" (change)="onSelectFile($event)" accept="image/*" />
+    <img *ngIf="data.sekerId && seker && seker.logo_skr" [src]="serviceBase + seker.logo_skr" width="100" height="auto">
+    <img *ngIf="(!data.sekerId || !seker|| !seker.logo_skr) && url" [src]="url" width="100" height="auto">
+    <br>
+    <!-- <label> תמונת רקע</label>
+        <div class="custom-file-upload-wrapper">
+
+            <div class="custom-file-upload-name-wrapper">
+                <label class="custom-file-upload-name" *ngIf="file1">{{file1.name}}</label>
+                <label class="custom-file-upload-name" *ngIf="!file1">לא נבחרה תמונה</label>
+            </div>
+            <label class="custom-file-upload" for="file-input2">
+              <mat-icon>insert_drive_file</mat-icon>
+              <input type="file"/>
+              טען תמונה
+            </label>
+        </div>
+
+        <input id="file-input2" type="file" (change)="onSelectFile1($event)" accept="image/*" />
+        <img *ngIf="data.sekerId && seker && seker.jpg_skr" [src]="serviceBase + seker.jpg_skr" width="100" height="auto">
+        <img *ngIf="(!data.sekerId || !seker|| !seker.jpg_skr) && url1" [src]="url1" width="100" height="auto">
+        <br> -->
+    <label style="margin-left: 10px;">צבע רקע </label> <br>
+    <input type="color" [(ngModel)]="seker.bgcolor_skr">
+    <label style="margin-left: 10px;">צבע כתב</label> <br>
+    <input type="color" [(ngModel)]="seker.fountcolor_skr">
+    <br>
+    <button type="submit" class="btn-color" (click)="addSeker()">שמור</button>
+</div>
+
+
+
+
+<!-- enter background:  <input [disabled]="isDisabled" type="color"  [(ngModel)]="colorSeker.gcolor"><br><br>
 enter fount color: <input type="color"  [(ngModel)]="colorSeker.fcolor"><br><br>
 <input type="text" [(ngModel)]="colorSeker.text">
 <div><input type="radio" class="inputDesign" name="1">number 1</div><br><br>
@@ -7,9 +70,7 @@ enter fount color: <input type="color"  [(ngModel)]="colorSeker.fcolor"><br><br>
 <div>
     <input type="button" value="create" routerLink="/create/">
 </div>
-<br><br>
+<br><br> -->
 
-<input [disabled]="colorSeker.gcolor != ''" type="file"  (change)="onSelectFile($event)">
-
-
-<input height="50px" type="file" (change)="onSelectFile1($event)" >
+<!-- <input [disabled]="colorSeker.gcolor != ''" type="file" (change)="onSelectFile($event)">
+<input height="50px" type="file" (change)="onSelectFile1($event)"> -->

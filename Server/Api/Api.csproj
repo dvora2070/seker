@@ -95,7 +95,7 @@
     <Compile Include="Controllers\AnsOfAskedController.cs" />
     <Compile Include="Controllers\AnsOfQuestController.cs" />
     <Compile Include="Controllers\AskedController.cs" />
-    <Compile Include="Controllers\SkarimControllers.cs" />
+    <Compile Include="Controllers\SkarimController.cs" />
     <Compile Include="Controllers\TypeAnswerscontroller.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -115,6 +115,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="images\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

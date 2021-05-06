@@ -26,7 +26,6 @@ namespace BL
                 var newUser = new Users()
                 {
                     email_user = user.email_user,
-                    kod_user = user.kod_user,
                     name_user = user.name_user,
                     password_user = user.password_user
                 };

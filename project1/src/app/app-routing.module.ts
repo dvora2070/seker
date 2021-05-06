@@ -4,6 +4,9 @@ import { CreateSekerComponent } from './create-seker/create-seker.component';
 import { CreateComponent } from './create/create.component';
 import { RegiserComponent } from './regiser/regiser.component';
 import { LoginComponent } from './login/login.component';
+import { AllSkarimComponent } from './all-skarim/all-skarim.component';
+import { AllUsersComponent } from './all-users/all-users.component';
+import { SekerResultsComponent } from './seker-results/seker-results.component';
 
 
 const routes: Routes = [
@@ -11,7 +14,12 @@ const routes: Routes = [
  { path: 'create', component: CreateComponent },
  { path: 'login', component: LoginComponent },
  { path: 'register', component: RegiserComponent },
-{path:'', component: RegiserComponent}];
+
+ { path: 'skarim', component: AllSkarimComponent },
+ { path: 'users', component: AllUsersComponent },
+ { path: 'results', component: SekerResultsComponent },
+
+ { path:'', component: RegiserComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

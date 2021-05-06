@@ -29,7 +29,6 @@ namespace DAL
         public virtual DbSet<AnsOfQuest> AnsOfQuest { get; set; }
         public virtual DbSet<Asked> Asked { get; set; }
         public virtual DbSet<Questions> Questions { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TypeAnswers> TypeAnswers { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<Skarim> Skarim { get; set; }

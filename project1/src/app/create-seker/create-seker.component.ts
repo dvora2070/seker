@@ -53,7 +53,7 @@ export class CreateSekerComponent implements OnInit {
     if (this.seker.kod_skr && this.seker.kod_skr !== 0) {
       this.sekerService.updateSeker(this.seker).subscribe((x) => {
         if (this.file) {
-          this.sekerService.uploadImage(x, this.file).subscribe(
+          this.sekerService.uploadImage(x.kod_skr, this.file).subscribe(
             (data) => {
               this.close();
             },
@@ -68,7 +68,7 @@ export class CreateSekerComponent implements OnInit {
     } else {
       this.sekerService.addSeker(this.seker).subscribe((x) => {
         if (this.file) {
-          this.sekerService.uploadImage(x, this.file).subscribe(
+          this.sekerService.uploadImage(x.kod_skr, this.file).subscribe(
             (data) => {
               this.close();
             },

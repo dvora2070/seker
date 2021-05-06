@@ -1,7 +1,7 @@
 <div class="form-wrapper form-wrapper-xlarge">
     <h1 style="width: 200px">סקרים</h1>
     <br />
-    <button class="btn-color" (click)="openDialog()">הוסף סקר</button>
+    <mat-icon class="add-icon" (click)="openDialog();">add_circle_outline</mat-icon>
     <br />
 
     <table class="table table-striped" *ngIf="skarim.length > 0; else noContent">
@@ -23,7 +23,7 @@
                 <td>{{ seker.name_skr }}</td>
                 <td>{{ seker.startdate_skr | date: "dd/MM/yyyy" }}</td>
                 <td>{{ seker.lastdate_skr | date: "dd/MM/yyyy" }}</td>
-                <td><img [src]="baseUrl + seker.logo_skr" width="40px" /></td>
+                <td><img [src]="baseUrl + seker.logo_skr" width="60px" /></td>
                 <td>
                     <span class="color" [style.background-color]="seker.bgcolor_skr"></span>
                 </td>

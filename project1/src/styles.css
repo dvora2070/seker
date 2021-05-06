@@ -476,3 +476,14 @@ input[type="file"] {
 .mat-dialog-container {
     padding: 0!important;
 }
+
+.add-icon.mat-icon {
+    margin-right: 0;
+    font-size: 40px;
+    line-height: 40px;
+    float: right;
+    margin-top: -10px;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+}

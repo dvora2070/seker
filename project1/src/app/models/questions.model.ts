@@ -1,5 +1,5 @@
 import { AnsOfQuest } from "./ansOFquest.model";
-
+import { AnsOfAsked } from "./ansOFasked.model";
 export class Questions{
      kod_quest:number;
      kod_skr:number;
@@ -9,4 +9,5 @@ export class Questions{
      ismust_quest:boolean; 
 
      AnsOfQuest:AnsOfQuest[];
+     AnsOfAsked:AnsOfAsked[];
 }

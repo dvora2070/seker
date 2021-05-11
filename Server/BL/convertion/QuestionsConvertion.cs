@@ -23,6 +23,12 @@ namespace BL.convertion
             if (q.AnsOfQuest != null) {
                 newQuestions.AnsOfQuest = AnsOfQuestConvertion.convertToListDto(q.AnsOfQuest.ToList());
             }
+
+            
+            if (q.AnsOfQuest != null) {
+                newQuestions.AnsOfAsked = AnsOfAskedConvertion.convertToListDto(q.AnsOfAsked.ToList());
+            }
+            
             return newQuestions;
 
         }

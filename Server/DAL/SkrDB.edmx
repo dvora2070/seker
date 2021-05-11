@@ -13,7 +13,7 @@
           <Property Name="kod_quest" Type="int" Nullable="false" />
           <Property Name="kod_asked" Type="int" Nullable="false" />
           <Property Name="kod_ans" Type="int" />
-          <Property Name="answer" Type="varchar" MaxLength="1" />
+          <Property Name="answer" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="AnsOfQuest">
           <Key>
@@ -243,7 +243,7 @@
           <Property Name="kod_quest" Type="Int32" Nullable="false" />
           <Property Name="kod_asked" Type="Int32" Nullable="false" />
           <Property Name="kod_ans" Type="Int32" />
-          <Property Name="answer" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="answer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Asked" Relationship="project_skrModel.FK__AnsOfAske__kod_a__300424B4" FromRole="AnsOfAsked" ToRole="Asked" />
           <NavigationProperty Name="AnsOfQuest" Relationship="project_skrModel.FK__AnsOfAske__kod_a__30F848ED" FromRole="AnsOfAsked" ToRole="AnsOfQuest" />
           <NavigationProperty Name="Questions" Relationship="project_skrModel.FK__AnsOfAske__kod_q__31EC6D26" FromRole="AnsOfAsked" ToRole="Questions" />

@@ -46,6 +46,7 @@ export class CreateQuestionComponent implements OnInit {
     if (this.questions.length > 0) {
       num = this.questions.length + 1;
     }
+
     this.questions.push({
       kod_skr: this.sekerId,
       ismust_quest: true,
@@ -54,6 +55,7 @@ export class CreateQuestionComponent implements OnInit {
       type_ans: 1,
       kod_quest: 0,
       AnsOfQuest: [],
+      AnsOfAsked: [],
     });
     this.quest = this.questions[this.questions.length - 1];
   }
@@ -65,7 +67,8 @@ export class CreateQuestionComponent implements OnInit {
     this.quest.AnsOfQuest.push({
       kod_ans: 0,
       kod_quest: this.quest.kod_quest,
-      text_ans: "",
+      text_ans: ""
+      
     });
   }
   removeAns(ans) {
@@ -76,7 +79,7 @@ export class CreateQuestionComponent implements OnInit {
   }
   saveQuestions() {
     this.sekerService.saveQuestions(this.questions).subscribe((x) => {
-      Swal.fire('','השמירה בוצעה בהצלחה!','success');
+      Swal.fire("", "השמירה בוצעה בהצלחה!", "success");
       this.getQuestionBySekerId();
     });
   }

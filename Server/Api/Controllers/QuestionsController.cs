@@ -25,6 +25,14 @@ namespace Api
         {
             return Ok(QuestionsBL.getQuestionsBySekerId(sekerId));
         }
+
+        [HttpGet]
+        [Route("getQuestionsBySekerIdWithAns/{sekerId}")]
+        public IHttpActionResult getQuestionsBySekerIdWithAns(int sekerId)
+        {
+            return Ok(QuestionsBL.getQuestionsBySekerIdWithAns(sekerId));
+        }
+
         [HttpGet]
         [Route("getQuestionById/{id}")]
         public IHttpActionResult getQuestionById(int id)

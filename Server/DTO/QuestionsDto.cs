@@ -16,7 +16,11 @@ namespace DTO
         public bool ismust_quest { get; set; }
 
         public  List<AnsOfQuestDto> AnsOfQuest { get; set; }
+
+        public List<AnsOfaskedDto> AnsOfAsked { get; set; }
+
         
+
 
     }
 }

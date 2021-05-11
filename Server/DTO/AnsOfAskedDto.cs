@@ -11,9 +11,6 @@ namespace DTO
         public int kod_quest { get; set; }
         public int kod_asked { get; set; }
         public int? kod_ans { get; set; }
-
-
-        public string text_ans { get; set; }
         public string answer { get; set; }
 
     }

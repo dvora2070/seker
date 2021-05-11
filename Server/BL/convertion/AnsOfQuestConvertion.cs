@@ -16,6 +16,11 @@ namespace BL.convertion
             newQuest.kod_ans = aq.kod_ans;
             newQuest.kod_quest = aq.kod_quest;
             newQuest.text_ans = aq.text_ans;
+            if (aq.AnsOfAsked != null)
+            {
+                newQuest.AnsOfAsked = AnsOfAskedConvertion.convertToListDto(aq.AnsOfAsked.ToList());
+            }
+
             return newQuest;
 
         }

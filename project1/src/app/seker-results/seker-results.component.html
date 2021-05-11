@@ -1,1 +1,38 @@
-<p>seker-results works!</p>
+<div class="form-wrapper form-wrapper-xlarge">
+    <h1 style="max-width: 200px">שאלות בסקר</h1>
+
+    <div class="row">
+        <label>בחר סקר</label></div>
+    <div class="row">
+        <select [(ngModel)]="sekerId" (ngModelChange)="changeSeker($event)">
+      <option *ngFor="let seker of skarim" [value]="seker.kod_skr">
+        {{ seker.name_skr }}
+      </option>
+    </select>
+    </div>
+    <div>
+        <div class="card" *ngFor="let quest of questions">
+            <h3>שאלה מספר {{quest.num_quest}}</h3>
+            <label>{{quest.text_quest}}</label><br>
+            <div class="ans-wrapper" *ngIf="quest.type_ans!=1">
+                <label class="label-header"> {{quest.AnsOfAsked.length}} תשובות </label>
+                <div *ngFor="let ans of quest.AnsOfQuest; let i = index">
+                    <label>{{ans.AnsOfAsked.length}} - {{ans.text_ans}}</label>
+
+                </div>
+
+
+            </div>
+            <div class="ans-wrapper" *ngIf="quest.type_ans==1">
+                <label class="label-header"> {{quest.AnsOfAsked.length}}  תשובות </label>
+                <div *ngFor="let ans of quest.AnsOfAsked; let i = index">
+                    <label>{{ans.answer}} </label>
+
+                </div>
+
+
+            </div>
+        </div>
+        <br> <br>
+    </div>
+</div>

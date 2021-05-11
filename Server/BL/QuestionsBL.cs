@@ -38,7 +38,14 @@ namespace BL
                 return QuestionsConvertion.convertToListDto(questions);
             }
         }
-
+        public static List<QuestionsDto> getQuestionsBySekerIdWithAns(int sekerId)
+        {
+            using (project_skrEntities db = new project_skrEntities())
+            {
+                var questions = db.Questions.Include("AnsOfQuest").Include("AnsOfAsked").Include("AnsOfQuest.AnsOfAsked").Where(x => x.kod_skr == sekerId).ToList();
+                return QuestionsConvertion.convertToListDto(questions);
+            }
+        }
         public static QuestionsDto updateQuestion(QuestionsDto quest)
         {
             using (project_skrEntities db = new project_skrEntities())

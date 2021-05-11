@@ -11,5 +11,7 @@ namespace DTO
         public int kod_ans { get; set; }
         public Nullable<int> kod_quest { get; set; }
         public string text_ans { get; set; }
+
+        public List<AnsOfaskedDto> AnsOfAsked { get; set; }
     }
 }

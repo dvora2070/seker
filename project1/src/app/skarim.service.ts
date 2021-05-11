@@ -44,6 +44,14 @@ export class SkarimService {
       this.URLQuestions + "getQuestionsBySekerId/" + sekerId
     );
   }
+  getQuestionsBySekerIdWithAns(sekerId: number) {
+    return this.http.get<Questions[]>(
+      this.URLQuestions + "getQuestionsBySekerIdWithAns/" + sekerId
+    );
+  }
+  
+
+
   getQuestionById(id: number) {
     return this.http.get<Questions>(
       this.URLQuestions + "getQuestionById/" + id

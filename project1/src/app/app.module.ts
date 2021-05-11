@@ -17,6 +17,8 @@ import { AllUsersComponent } from './all-users/all-users.component';
 import { SekerResultsComponent } from './seker-results/seker-results.component';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SetAskedComponent } from './set-asked/set-asked.component';
+import { ViewSekerComponent } from './view-seker/view-seker.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +30,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SkarimComponent,
     AllSkarimComponent,
     AllUsersComponent,
-    SekerResultsComponent
+    SekerResultsComponent,
+    SetAskedComponent,
+    ViewSekerComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +44,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
 
     
-  ],
+  ],entryComponents: [CreateSekerComponent,SetAskedComponent ],
   providers: [  { provide: MAT_DIALOG_DATA, useValue: {} },
     { provide: MatDialogRef, useValue: {} },
     {  provide: MAT_DATE_LOCALE, useValue: 'he-IL'},],

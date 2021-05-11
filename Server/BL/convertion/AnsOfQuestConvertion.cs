@@ -30,6 +30,15 @@ namespace BL.convertion
             return newQuest;
         }
 
+        public static List<AnsOfQuest> convertToAnsOfQuestList(List<AnsOfQuestDto> aq)
+        {
+            List<AnsOfQuest> newQuest = new List<AnsOfQuest>();
+            aq.ForEach(x =>
+            {
+                newQuest.Add(convertToAnsOfQuest(x));
+            });
+            return newQuest;
+        }
         public static AnsOfQuest convertToAnsOfQuest(AnsOfQuestDto aq)
         {
             AnsOfQuest newQuest = new AnsOfQuest();

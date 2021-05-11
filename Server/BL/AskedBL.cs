@@ -19,5 +19,47 @@ namespace BL
                 return AskedConvertion.convertToListDto(asked);
             }
         }
+
+        public static AskedDto getAskedById(int id)
+        {
+            using (project_skrEntities db = new project_skrEntities())
+            {
+                var asked = db.Asked.FirstOrDefault(x=>x.kod_asked == id);
+                return AskedConvertion.convertToDto(asked);
+            }
+        }
+
+
+        public static AskedDto AddAsked(AskedDto ask)
+        {
+            using (project_skrEntities db = new project_skrEntities())
+            {
+                var newask = new Asked()
+                {
+                    email_asked = ask.email_asked,
+                    name_asked = ask.name_asked,
+                    phone_asked = ask.phone_asked
+                };
+                db.Asked.Add(newask);
+                db.SaveChanges();
+                return AskedConvertion.convertToDto(newask);
+            }
+        }
+
+        public static AskedDto UpdateAsked(AskedDto ask)
+        {
+
+            using (project_skrEntities db = new project_skrEntities())
+            {
+                var asked = db.Asked.FirstOrDefault(x => x.kod_asked == ask.kod_asked);
+                if (asked == null) return null;
+                asked.email_asked = ask.email_asked;
+                asked.name_asked = ask.name_asked;
+                asked.phone_asked = ask.phone_asked;
+
+                db.SaveChanges();
+                return AskedConvertion.convertToDto(asked);
+            }
+        }
     }
 }

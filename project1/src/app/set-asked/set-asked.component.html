@@ -1,0 +1,18 @@
+<div class="form-wrapper-modal">
+    <h1 *ngIf="data && data.askedId;else:newAsked">עדכון נסקר</h1>
+    <ng-template #newAsked>
+        <h1>הוספת נסקר</h1>
+    </ng-template>
+    <br>
+    <label>שם</label>
+    <br><input type="text" [(ngModel)]="asked.name_asked" required>
+    <small class="error" *ngIf="!asked.name_asked"> חובה להזין שם</small>
+    <label>מייל</label>
+    <br><input type="email" [(ngModel)]="asked.email_asked" required>
+    <small class="error" *ngIf="!asked.email_asked"> חובה להזין מייל</small>
+    <label>פלאפון</label>
+    <br><input type="tel" [(ngModel)]="asked.phone_asked" required>
+    <small class="error" *ngIf="!asked.phone_asked"> חובה להזין פלאפון</small>
+    <br>
+    <button type="submit" class="btn-color" (click)="saveAsked()">שמור</button>
+</div>

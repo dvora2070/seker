@@ -9,10 +9,10 @@
     <br><input type="text" [(ngModel)]="seker.name_skr" required>
     <small class="error" *ngIf="!seker.name_skr"> חובה להזין שם</small>
     <label>תאריך התחלה</label>
-    <br><input [ngModel]="seker.startdate_skr | date:'dd-MM-yyyy'" (ngModelChange)="seker.startdate_skr = $event" type="date" name="startdate_skr" required>
+    <br><input [ngModel]="seker.startdate_skr | date:'yyyy-MM-dd'" #dateF="ngModel" (ngModelChange)="seker.startdate_skr = $event" type="date" name="dateF" required>
     <small class="error" *ngIf="!seker.startdate_skr"> חובה להזין תאריך</small>
     <label>תאריך סיום</label>
-    <br><input [ngModel]="seker.lastdate_skr | date:'dd-MM-yyyy'" (ngModelChange)="seker.lastdate_skr = $event" type="date" name="lastdate_skr" required>
+    <br><input [ngModel]="seker.lastdate_skr | date:'yyyy-MM-dd'" #dateT="ngModel" (ngModelChange)="seker.lastdate_skr = $event" type="date" name="dateT" required>
     <small class="error" *ngIf="!seker.lastdate_skr"> חובה להזין תאריך</small>
     <label>לוגו</label>
     <div class="custom-file-upload-wrapper">

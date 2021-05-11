@@ -13,7 +13,10 @@ namespace DTO
         public Nullable<int> num_quest { get; set; }
         public string text_quest { get; set; }
         public Nullable<int> type_ans { get; set; }
-        public byte[] ismust_quest { get; set; }
+        public bool ismust_quest { get; set; }
+
+        public  List<AnsOfQuestDto> AnsOfQuest { get; set; }
+        
 
     }
 }

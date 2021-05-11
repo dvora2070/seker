@@ -1,4 +1,4 @@
 export class TypeAnswers {
-    kod_type:number;
-    name_type:string;
+  kod_type: number;
+  name_type: string;
 }

@@ -19,6 +19,10 @@ namespace BL.convertion
             newQuestions.text_quest = q.text_quest;
             newQuestions.type_ans = q.type_ans;
             newQuestions.ismust_quest = q.ismust_quest;
+
+            if (q.AnsOfQuest != null) {
+                newQuestions.AnsOfQuest = AnsOfQuestConvertion.convertToListDto(q.AnsOfQuest.ToList());
+            }
             return newQuestions;
 
         }
@@ -43,6 +47,11 @@ namespace BL.convertion
             newQuestions.text_quest = q.text_quest;
             newQuestions.type_ans = q.type_ans;
             newQuestions.ismust_quest = q.ismust_quest;
+            if (q.AnsOfQuest != null)
+            {
+                newQuestions.AnsOfQuest = AnsOfQuestConvertion.convertToAnsOfQuestList(q.AnsOfQuest.ToList());
+            }
+
             return newQuestions;
         }
     }

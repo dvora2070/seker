@@ -26,13 +26,13 @@ namespace DAL
         public Nullable<int> num_quest { get; set; }
         public string text_quest { get; set; }
         public Nullable<int> type_ans { get; set; }
-        public byte[] ismust_quest { get; set; }
+        public bool ismust_quest { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AnsOfAsked> AnsOfAsked { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AnsOfQuest> AnsOfQuest { get; set; }
-        public virtual TypeAnswers TypeAnswers { get; set; }
         public virtual Skarim Skarim { get; set; }
+        public virtual TypeAnswers TypeAnswers { get; set; }
     }
 }

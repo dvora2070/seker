@@ -22,5 +22,18 @@ namespace DAL
         public virtual Asked Asked { get; set; }
         public virtual AnsOfQuest AnsOfQuest { get; set; }
         public virtual Questions Questions { get; set; }
+
+
+        public override int GetHashCode()
+        {
+            return this.kod_asked;
+        }
+        public override bool Equals(object obj)
+        {
+            AnsOfAsked tmp = obj as AnsOfAsked;
+            if (tmp == null) return false;
+            return this.GetHashCode() == tmp.GetHashCode();
+        }
+
     }
 }

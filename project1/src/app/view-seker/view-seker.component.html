@@ -1,1 +1,48 @@
-<p>view-seker works!</p>
+<div class="view-seker-wrapper" [style.background-color]="seker.bgcolor_skr" [style.color]="seker.fountcolor_skr">
+    <img *ngIf="seker.logo_skr" [src]="baseUrl + seker.logo_skr" class="bg-left " />
+    <h1>הי {{ asked.name_asked }}</h1>
+
+    <div>
+        <div class="card" *ngIf="quest">
+            <h3 style="padding-right: 10px" [style.background-color]="seker.fountcolor_skr" [style.color]="seker.bgcolor_skr">
+                שאלה מספר {{ quest.num_quest }}
+            </h3>
+            <label>{{ quest.text_quest }}</label>
+            <small class="error" *ngIf="quest.ismust_quest">*חובה</small>
+            <br />
+            <div class="ans-wrapper" *ngIf="quest.type_ans != 1">
+                <br />
+
+                <div *ngFor="let ans of quest.AnsOfQuest; let i = index" class="input-wrapper">
+                    <input type="radio" name="kod_ans" [value]="ans.kod_ans" [checked]="ans.kod_ans == quest.AnsOfAsked[0].kod_ans" [(ngModel)]="quest.AnsOfAsked[0].kod_ans" />{{ ans.text_ans }}
+
+                </div>
+            </div>
+            <div class="ans-wrapper" *ngIf="quest.type_ans == 1">
+                <br />
+
+                <input type="text" [(ngModel)]="quest.AnsOfAsked[0].answer" />
+            </div>
+        </div>
+        <br />
+        <br />
+        <div class="footer-pagination">
+            <button mat-icon-button [disabled]="pageIndex == 0" (click)="prevAns();">
+            <mat-icon  style="cursor: pointer;" >keyboard_arrow_right</mat-icon>
+         </button>
+            <button mat-icon-button [disabled]="pageIndex == questions.length -1
+        || (quest.ismust_quest && ((!quest.AnsOfAsked[0].answer && 
+        
+        quest.type_ans == 1) || (!quest.AnsOfAsked[0].kod_ans && 
+        
+        quest.type_ans != 1)))" (click)="nextAns();">
+            <mat-icon  style="cursor: pointer;" >keyboard_arrow_left</mat-icon>
+         </button>
+            <br><br>
+            <button class="btn-color" style="display: inline-block;" *ngIf="pageIndex == questions.length -1" [style.background-color]="seker.fountcolor_skr" [style.color]="seker.bgcolor_skr">
+            סיום סקר
+        </button>
+
+        </div>
+    </div>
+</div>

@@ -18,6 +18,8 @@ namespace Api
         {
             return Ok(QuestionsBL.getAllQuestions());
         }
+        
+
 
         [HttpGet]
         [Route("getQuestionsBySekerId/{sekerId}")]

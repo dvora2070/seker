@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { environment } from "src/environments/environment";
+import Swal from "sweetalert2";
 import { ColorSekerService } from "../color-seker.service";
 import { Skarim } from "../models/skarim.model";
 import { Users } from "../models/user.model";
@@ -55,6 +56,7 @@ export class CreateSekerComponent implements OnInit {
         if (this.file) {
           this.sekerService.uploadImage(x.kod_skr, this.file).subscribe(
             (data) => {
+              Swal.fire("", "השמירה בוצעה בהצלחה!", "success");
               this.close();
             },
             (error) => {
@@ -62,6 +64,7 @@ export class CreateSekerComponent implements OnInit {
             }
           );
         } else {
+          Swal.fire("", "השמירה בוצעה בהצלחה!", "success");
           this.close();
         }
       });
@@ -70,6 +73,7 @@ export class CreateSekerComponent implements OnInit {
         if (this.file) {
           this.sekerService.uploadImage(x.kod_skr, this.file).subscribe(
             (data) => {
+              Swal.fire("", "השמירה בוצעה בהצלחה!", "success");
               this.close();
             },
             (error) => {
@@ -77,6 +81,7 @@ export class CreateSekerComponent implements OnInit {
             }
           );
         } else {
+          Swal.fire("", "השמירה בוצעה בהצלחה!", "success");
           this.close();
         }
       });

@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
+import Swal from "sweetalert2";
 import { AskedService } from "../asked.service";
 import { Asked } from "../models/asked.model";
 
@@ -28,10 +29,12 @@ export class SetAskedComponent implements OnInit {
   saveAsked() {
     if (this.asked.kod_asked && this.asked.kod_asked !== 0) {
       this.askedService.updateAsked(this.asked).subscribe((x) => {
+        Swal.fire("", "השמירה בוצעה בהצלחה!", "success");
         this.close();
       });
     } else {
       this.askedService.addAsked(this.asked).subscribe((x) => {
+        Swal.fire("", "השמירה בוצעה בהצלחה!", "success");
         this.close();
       });
     }

@@ -283,6 +283,16 @@ div:focus {
     border-style: solid;
 }
 
+.bg-left {
+    position: absolute;
+    width: 120px;
+    top: 0;
+    left: 0;
+    background-size: contain;
+    opacity: 1;
+    background-repeat: no-repeat;
+}
+
 .bg {
     position: absolute;
     width: 100%;
@@ -291,7 +301,7 @@ div:focus {
     left: 0;
     background-size: contain;
     background-image: url('assets/bg4.png');
-    opacity: 0.3;
+    opacity: 0.6;
     z-index: -1;
     background-repeat: no-repeat;
 }

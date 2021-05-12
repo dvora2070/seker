@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material";
 import { environment } from "src/environments/environment";
+import Swal from "sweetalert2";
 import { CreateSekerComponent } from "../create-seker/create-seker.component";
 import { Skarim } from "../models/skarim.model";
 import { Users } from "../models/user.model";
@@ -27,6 +28,31 @@ export class AllSkarimComponent implements OnInit {
     this.sekerService.getSkarimByUserId(  this.userId).subscribe((x) => {
       this.skarim = x;
    
+    });
+
+  }
+
+  sendSeker(sekerId){
+    Swal.fire({
+      title: '',
+      text: 'האם את/ה בטוח/ה שאת/ה רוצה להפיץ את הסקר?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'כן',
+      cancelButtonText: 'לא',
+    }).then((result) => {
+      if (result.value) {
+        this.sekerService
+          .sendSeker(
+            sekerId
+          )
+          .subscribe((x) => {
+            if (x) {
+              Swal.fire('', 'המייל/ים נשלחו בהצלחה', 'success');
+            }
+          });
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+      }
     });
 
   }

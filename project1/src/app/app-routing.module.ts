@@ -8,6 +8,7 @@ import { AllSkarimComponent } from './all-skarim/all-skarim.component';
 import { AllUsersComponent } from './all-users/all-users.component';
 import { SekerResultsComponent } from './seker-results/seker-results.component';
 import { CreateQuestionComponent } from './create-question/create-question.component';
+import { ViewSekerComponent } from './view-seker/view-seker.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
  { path: 'login', component: LoginComponent },
  { path: 'register', component: RegiserComponent },
  { path: 'skarim', component: AllSkarimComponent },
+ { path: 'seker/:id/:askedId', component: ViewSekerComponent },
  { path: 'asked', component: AllUsersComponent },
  { path: 'results', component: SekerResultsComponent },
 

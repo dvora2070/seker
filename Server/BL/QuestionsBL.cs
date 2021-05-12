@@ -38,6 +38,11 @@ namespace BL
                 return QuestionsConvertion.convertToListDto(questions);
             }
         }
+
+
+
+
+
         public static List<QuestionsDto> getQuestionsBySekerIdWithAns(int sekerId)
         {
             using (project_skrEntities db = new project_skrEntities())
@@ -146,3 +151,5 @@ namespace BL
 
     }
 }
+//disekerit
+//dvora1234

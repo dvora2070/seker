@@ -18,5 +18,15 @@ namespace Api.Controllers
         {
             return Ok(AnsOfAskedBL.getAllAnsOfAsked());
         }
+
+
+        [HttpGet]
+        [Route("getQuestionBySekerAndAskedId/{sekerId}/{askedId}")]
+        public IHttpActionResult getQuestionBySekerAndAskedId(int sekerId, int askedId)
+        {
+            return Ok(AnsOfAskedBL.getQuestionBySekerAndAskedId(sekerId, askedId));
+        }
+
+
     }
 }

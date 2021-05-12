@@ -26,6 +26,15 @@ namespace Api.Controllers
         {
             return Ok(SkarimBL.GetSkarimByUserId(userId));
         }
+
+        [HttpGet]
+        [Route("sendSeker/{sekerId}")]
+        public IHttpActionResult SendSeker(int sekerId)
+        { 
+            return Ok(SkarimBL.SendSeker(sekerId));
+        }
+
+
         [HttpGet]
         [Route("GetSkarimById/{id}")]
         public IHttpActionResult GetSkarimById(int id)

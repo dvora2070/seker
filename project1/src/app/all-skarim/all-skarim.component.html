@@ -33,6 +33,8 @@
                 <td>
                     <mat-icon style="cursor: pointer;" (click)="openDialog(seker.kod_skr)">edit</mat-icon>
                     <mat-icon style="cursor: pointer; margin-right: 10px;" [routerLink]="['/questions/' + seker.kod_skr]">more_vert</mat-icon>
+                    <mat-icon style="cursor: pointer; margin-right: 10px;" (click)="sendSeker(seker.kod_skr)">email</mat-icon>
+
                 </td>
             </tr>
         </tbody>

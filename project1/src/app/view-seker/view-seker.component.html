@@ -1,3 +1,4 @@
+<div class="bg-2"></div>
 <div class="view-seker-wrapper" [style.background-color]="seker.bgcolor_skr" [style.color]="seker.fountcolor_skr">
     <img *ngIf="seker.logo_skr" [src]="baseUrl + seker.logo_skr" class="bg-left " />
     <h1>הי {{ asked.name_asked }}</h1>
@@ -39,7 +40,7 @@
             <mat-icon  style="cursor: pointer;" >keyboard_arrow_left</mat-icon>
          </button>
             <br><br>
-            <button class="btn-color" style="display: inline-block;" *ngIf="pageIndex == questions.length -1" [style.background-color]="seker.fountcolor_skr" [style.color]="seker.bgcolor_skr">
+            <button class="btn-color" style="display: inline-block;" *ngIf="pageIndex == questions.length -1" [style.background-color]="seker.fountcolor_skr" [style.color]="seker.bgcolor_skr" (click)="saveSekerAskedId();">
             סיום סקר
         </button>
 

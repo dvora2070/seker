@@ -1,4 +1,5 @@
 ﻿using BL;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,15 @@ namespace Api.Controllers
             return Ok(AnsOfAskedBL.getQuestionBySekerAndAskedId(sekerId, askedId));
         }
 
+        [HttpPost]
+        [Route("saveSekerAns")]
+        public IHttpActionResult saveSekerAns(List<AnsOfaskedDto> ans)
+        {
+            return Ok(AnsOfAskedBL.saveSekerAns(ans));
+        }
+
+
+        
 
     }
 }

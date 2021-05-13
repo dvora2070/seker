@@ -31,5 +31,35 @@ namespace BL
             }
         }
 
+
+        public static bool saveSekerAns(List<AnsOfaskedDto> answersOfAsked)
+        {
+            using (project_skrEntities db = new project_skrEntities())
+            {
+                foreach (var ans in answersOfAsked)
+                {
+                    var ansDb = db.AnsOfAsked.FirstOrDefault(x=>x.kod_quest == ans.kod_quest
+                    && x.kod_asked == ans.kod_asked);
+
+                    if (ansDb == null)
+                    {
+                        var newAns = AnsOfAskedConvertion.convertToAnsOfAsked(ans);
+                        db.AnsOfAsked.Add(newAns);
+                    }
+
+                    else {
+                        ansDb.answer = ans.answer;
+                        ansDb.kod_ans = ans.kod_ans;
+
+
+
+                    }
+
+
+                }
+                db.SaveChanges();
+                return true;
+            }
+        }
     }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Params } from "@angular/router";
 import { environment } from "src/environments/environment";
+import Swal from "sweetalert2";
 import { AnsOfAsked } from "../models/ansOFasked.model";
 import { Asked } from "../models/asked.model";
 import { Questions } from "../models/questions.model";
@@ -85,5 +86,21 @@ export class ViewSekerComponent implements OnInit {
     this.pageIndex ++;
     this.quest = this.questions[this.pageIndex];
   }
-  saveSekerAskedId() {}
+  saveSekerAskedId() {
+
+    var ans = [];
+    this.questions.forEach((x) => {
+      var ansOdAsked = x.AnsOfAsked[0];
+      if((ansOdAsked.answer && ansOdAsked.answer!= '') || (ansOdAsked.kod_ans && ansOdAsked.kod_ans!=0)){
+        ans.push(x.AnsOfAsked[0]); 
+      }
+    
+    });
+    this.sekerService
+    .saveSekerAns(ans)
+    .subscribe((x) => {
+      Swal.fire('', 'הסקר נשלח בהצלחה!', 'success');
+ 
+    });
+  }
 }

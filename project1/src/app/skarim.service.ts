@@ -42,6 +42,11 @@ export class SkarimService {
   updateSeker(seker: Skarim) {
     return this.http.post<Skarim>(this.URL + "UpdateSeker", seker);
   }
+  saveSekerAns(ans: AnsOfAsked[]) {
+    return this.http.post<Skarim>(this.URLAnsOfAsked + "saveSekerAns", ans);
+  }
+
+
   uploadImage(sekerId, image) {
     let formData: FormData = new FormData();
     formData.append("Image", image);

@@ -1,4 +1,6 @@
+import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Users } from '../models/user.model';
 import { UserService } from '../user.service';
 
@@ -9,7 +11,7 @@ import { UserService } from '../user.service';
 })
 export class RegiserComponent implements OnInit {
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,private route : Router) { }
   newUser = new Users();
 
   users: Users[] = [];
@@ -20,7 +22,9 @@ export class RegiserComponent implements OnInit {
     this.userService.register(this.newUser).subscribe(x => {
       console.log(x);
       localStorage.setItem("user", JSON.stringify(x));
+
       this.userService.loginUser.next();
+      this.route.navigateByUrl("/skarim");
 
     });
   }

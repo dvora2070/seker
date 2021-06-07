@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { UserService } from "../user.service";
 import { Router } from "@angular/router";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: "app-login",
@@ -16,8 +17,10 @@ export class LoginComponent implements OnInit {
   login() {
     this.userService.login(this.userName, this.password).subscribe((x) => {
       if (!x) {
-        alert("המשתמש לא קיים");
+        Swal.fire('Ooops',"המשתמש לא קיים",'error');
       } else {
+
+
         localStorage.setItem("user", JSON.stringify(x));
 
         this.userService.loginUser.next();

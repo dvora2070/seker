@@ -3,11 +3,22 @@
     <br>
     <label for="name">שם משתמש</label>
     <br>
-    <input type="text" value="user name" id="name" name="name" [(ngModel)]="userName"><br>
+    <input type="text" value="user name" id="name" name="name" required [(ngModel)]="userName">
+    <div style="min-height: 12px;">
+        <small class="error" *ngIf="!userName"> חובה להזין שם</small>
+    </div>
+
     <label for="password">סיסמא</label>
+
     <br>
-    <input type="password" id="password" name="password" value="password" [(ngModel)]="password"><br><br>
-    <button (click)="login()" class="btn-color">כניסה</button>
+    <input type="password" id="password" name="password" value="password" required [(ngModel)]="password">
+    <div style="min-height: 12px;">
+        <small class="error" *ngIf="!password"> חובה להזין סיסמא</small>
+        <small class="error" *ngIf="password && password.length < 4"> חובה להזין מינימום 4 תווים</small>
+    </div>
+
+
+    <button (click)="login()" [disabled]="!password || !userName" class="btn-color">כניסה</button>
 
     <br><br>
 

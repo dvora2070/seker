@@ -3,12 +3,23 @@
     <br>
     <div id="idregiste" style="align-items:center;">
         <label>שם משתמש</label><br>
-        <input type="text" placeholder="שם משתמש" [(ngModel)]="newUser.name_user"><br>
+        <input type="text" placeholder="שם משתמש" [(ngModel)]="newUser.name_user">
+        <div style="min-height: 12px;">
+            <small class="error" *ngIf="!newUser.name_user"> חובה להזין שם</small>
+        </div>
         <label> סיסמא</label><br>
-        <input type="password" placeholder="סיסמא" [(ngModel)]="newUser.password_user"><br>
+        <input type="password" placeholder="סיסמא" [(ngModel)]="newUser.password_user">
+        <div style="min-height: 12px;">
+            <small class="error" *ngIf="!newUser.password_user"> חובה להזין סיסמא</small>
+            <small class="error" *ngIf="newUser.password_user && newUser.password_user.length < 4"> חובה להזין מינימום 4 תווים</small>
+        </div>
         <label> אימייל</label><br>
-        <input type="text" placeholder="אימייל" [(ngModel)]="newUser.email_user"><br> <br>
-        <button class="btn-color" type="submit" (click)="OnRegister()">הרשמה</button>
+        <input type="email" placeholder="אימייל" #email="ngModel" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [(ngModel)]="newUser.email_user">
+        <div style="min-height: 12px;">
+            <small class="error" *ngIf="!newUser.email_user"> חובה להזין אימייל</small>
+            <small class="error" *ngIf="email.hasError('pattern')"> אימייל לא תקין</small>
+        </div>
+        <button class="btn-color" [disabled]="!newUser.email_user || !newUser.name_user || !newUser.password_user || email.hasError('pattern')" type="submit" (click)="OnRegister()">הרשמה</button>
         <br><br>
     </div>
 </div>

@@ -3,7 +3,7 @@
     <img *ngIf="seker.logo_skr" [src]="baseUrl + seker.logo_skr" class="bg-left " />
     <h1>הי {{ asked.name_asked }}</h1>
 
-    <div>
+    <div *ngIf="!notRelevantSeker">
         <div class="card" *ngIf="quest">
             <h3 style="padding-right: 10px" [style.background-color]="seker.fountcolor_skr" [style.color]="seker.bgcolor_skr">
                 שאלה מספר {{ quest.num_quest }}
@@ -45,5 +45,10 @@
         </button>
 
         </div>
+    </div>
+    <div *ngIf="notRelevantSeker" style="text-align: center;">
+        <br>
+
+        <h2> הסקר נגמר - מחכים לך בסקר הבא...</h2>
     </div>
 </div>

@@ -18,8 +18,9 @@ export class CreateSekerComponent implements OnInit {
   file: File;
   userId: number;
   serviceBase = environment.apiUrl + "/images/";
-  //seker = new Skarim() = {logo_skr:'111',name_skr:'Seker 111'};
-  constructor(
+  todaysdate = new Date();
+  
+   constructor(
     public colorSeker: ColorSekerService,
     private sekerService: SkarimService,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -36,6 +37,9 @@ export class CreateSekerComponent implements OnInit {
     } else {
       this.seker.bgcolor_skr = "#ffffff";
       this.seker.fountcolor_skr = "#000000";
+      this.seker.startdate_skr = new Date();
+      this.seker.lastdate_skr =  new Date( new Date().getTime() + (1000 * 60 * 60 * 24 * 10));
+    
     }
   }
 
@@ -49,8 +53,10 @@ export class CreateSekerComponent implements OnInit {
       };
     }
   }
+  //הוספת סקר
   addSeker() {
     this.seker.kod_user = this.userId;
+    // אם הסקר קיים - עדכון
     if (this.seker.kod_skr && this.seker.kod_skr !== 0) {
       this.sekerService.updateSeker(this.seker).subscribe((x) => {
         if (this.file) {
@@ -68,6 +74,7 @@ export class CreateSekerComponent implements OnInit {
           this.close();
         }
       });
+      // אחרת יצירה חדשה
     } else {
       this.sekerService.addSeker(this.seker).subscribe((x) => {
         if (this.file) {

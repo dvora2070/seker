@@ -43,5 +43,13 @@ namespace Api.Controllers
         {
             return Ok(AskedBL.UpdateAsked(asked));
         }
+        [HttpPost]
+        [Route("uploadAsked")]
+        public IHttpActionResult UploadAsked(List<AskedDto> asked)
+        {
+            return Ok(AskedBL.UploadAsked(asked));
+        }
+
+        
     }
 }

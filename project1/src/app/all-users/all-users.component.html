@@ -1,6 +1,10 @@
 <div class="form-wrapper form-wrapper-xlarge">
     <h1 style="width: 200px">נסקרים</h1>
     <br />
+    <div>
+        <label>טען אקסל:</label> &nbsp;
+        <input type="file" #csvReader (change)="uploadListener($event)" accept=".csv" />
+    </div>
     <mat-icon class="add-icon" (click)="openDialog()">add_circle_outline</mat-icon>
     <br />
 

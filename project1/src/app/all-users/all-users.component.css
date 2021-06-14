@@ -1,0 +1,13 @@
+ input {
+     display: inline-block;
+     width: 200px;
+     text-align: right;
+     direction: rtl;
+     margin: auto;
+     height: 24px;
+     border-color: #c3c3c3;
+     padding: 0 2px;
+     line-height: 24px;
+     font-size: 14px;
+     border-style: solid;
+ }

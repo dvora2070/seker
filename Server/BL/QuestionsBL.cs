@@ -81,40 +81,29 @@ namespace BL
             }
         }
 
-
+        // שמירת שאלות בסקר
         public static bool saveQuestions(List<QuestionsDto> questions)
         {
             using (project_skrEntities db = new project_skrEntities())
             {
                 foreach (var quest in questions)
                 {
+                    //שליפת השאלה בסקר
                     var question = db.Questions.Include("AnsOfQuest")
                         .FirstOrDefault(x => x.kod_quest == quest.kod_quest);
                     if (question == null)
                     {
-
+                        //יצירת שאלה חדשה אם לא קיימת
                         var q = QuestionsConvertion.convertToQuestions(quest);
                         db.Questions.Add(q);
                     }
                     else
-                    {
+                    {   //עדכון השאלה והתשובות לשאלה
                         question.ismust_quest = quest.ismust_quest;
                         question.text_quest = quest.text_quest;
                         question.num_quest = quest.num_quest;
                         question.type_ans = quest.type_ans;
 
-                        //  question.AnsOfQuest = AnsOfQuestConvertion.convertToAnsOfQuestList(quest.AnsOfQuest);
-
-
-                        //db.Entry(question.AnsOfQuest).State = EntityState.Detached;
-                        //if (entity.GetType().GetProperty("Id") != null)
-                        //{
-                        //    entity.GetType().GetProperty("Id").SetValue(entity, 0);
-                        //}
-                        //return entity;
-
-
-                        //  var ans = AnsOfQuestConvertion.convertToAnsOfQuestList(quest.AnsOfQuest);
                         question.AnsOfQuest = new List<AnsOfQuest>();
                         foreach (var ans in quest.AnsOfQuest)
                         {
@@ -126,6 +115,7 @@ namespace BL
                             }
 
                         }
+                        //הסרת תשובות לשאלה לא רלוונטיות
                         var existingsAns = db.AnsOfQuest.Where(x => x.kod_quest == quest.kod_quest).ToList();
                         foreach (var existingAns in existingsAns)
                         {
@@ -133,7 +123,6 @@ namespace BL
                             if (!question.AnsOfQuest.Any(c => c.kod_ans == existingAns.kod_ans))
                             {
                                 db.AnsOfQuest.Remove(existingAns);
-                                //  question.AnsOfQuest.Remove(existingAns);
                             }
 
 

@@ -34,6 +34,8 @@ namespace BL
         {
             using (project_skrEntities db = new project_skrEntities())
             {
+                var existsAsk = db.Asked.FirstOrDefault(x => x.email_asked == ask.email_asked);
+                if (existsAsk != null) return null;
                 var newask = new Asked()
                 {
                     email_asked = ask.email_asked,
@@ -44,6 +46,15 @@ namespace BL
                 db.SaveChanges();
                 return AskedConvertion.convertToDto(newask);
             }
+        }
+
+        public static bool UploadAsked(List<AskedDto> asked)
+        {
+            foreach (var ask in asked)
+            {
+                AddAsked(ask);
+            }
+            return true;
         }
 
         public static AskedDto UpdateAsked(AskedDto ask)

@@ -26,7 +26,7 @@ namespace BL.convertion
         }
 
       
-
+      
         public static List<SkarimDto> convertToListDto(List<Skarim> s)
         {
             List<SkarimDto> newSeker = new List<SkarimDto>();

@@ -14,7 +14,7 @@ import { SkarimService } from "../skarim.service";
   styleUrls: ["./view-seker.component.css"],
 })
 export class ViewSekerComponent implements OnInit {
-  seker= new Skarim();
+  seker = new Skarim();
   baseUrl = environment.apiUrl + "/images/";
   askedId: number;
   questions: Questions[] = [];
@@ -22,6 +22,7 @@ export class ViewSekerComponent implements OnInit {
   quest: Questions;
   asked = new Asked();
   ansOfAsked: AnsOfAsked[];
+  notRelevantSeker = false;
   pageIndex = 0;
   constructor(
     private sekerService: SkarimService,
@@ -43,12 +44,15 @@ export class ViewSekerComponent implements OnInit {
 
     this.sekerService.getSkarimById(this.sekerId).subscribe((x) => {
       this.seker = x;
+      if (
+        new Date(this.seker.startdate_skr) > new Date() ||
+        new Date(this.seker.lastdate_skr) < new Date()
+      )
+        this.notRelevantSeker = true;
     });
     this.sekerService.getQuestionsBySekerId(this.sekerId).subscribe((x) => {
       this.questions = x;
       if (this.questions && this.questions.length > 0) {
-       
-
         this.sekerService
           .getQuestionBySekerAndAskedId(this.sekerId, this.askedId)
           .subscribe((x) => {
@@ -77,30 +81,27 @@ export class ViewSekerComponent implements OnInit {
     });
   }
 
-  prevAns(){
-    this.pageIndex --;
+  prevAns() {
+    this.pageIndex--;
     this.quest = this.questions[this.pageIndex];
-   
   }
-  nextAns(){
-    this.pageIndex ++;
+  nextAns() {
+    this.pageIndex++;
     this.quest = this.questions[this.pageIndex];
   }
   saveSekerAskedId() {
-
     var ans = [];
     this.questions.forEach((x) => {
       var ansOdAsked = x.AnsOfAsked[0];
-      if((ansOdAsked.answer && ansOdAsked.answer!= '') || (ansOdAsked.kod_ans && ansOdAsked.kod_ans!=0)){
-        ans.push(x.AnsOfAsked[0]); 
+      if (
+        (ansOdAsked.answer && ansOdAsked.answer != "") ||
+        (ansOdAsked.kod_ans && ansOdAsked.kod_ans != 0)
+      ) {
+        ans.push(x.AnsOfAsked[0]);
       }
-    
     });
-    this.sekerService
-    .saveSekerAns(ans)
-    .subscribe((x) => {
-      Swal.fire('', 'הסקר נשלח בהצלחה!', 'success');
- 
+    this.sekerService.saveSekerAns(ans).subscribe((x) => {
+      Swal.fire("", "הסקר נשלח בהצלחה!", "success");
     });
   }
 }

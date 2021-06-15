@@ -9,7 +9,7 @@
                 שאלה מספר {{ quest.num_quest }}
             </h3>
             <label>{{ quest.text_quest }}</label>
-            <small class="error" *ngIf="quest.ismust_quest">*חובה</small>
+            <small class="error" *ngIf="quest && quest.ismust_quest">*חובה</small>
             <br />
             <div class="ans-wrapper" *ngIf="quest.type_ans != 1">
                 <br />
@@ -27,7 +27,7 @@
         </div>
         <br />
         <br />
-        <div class="footer-pagination">
+        <div class="footer-pagination" *ngIf="quest">
             <button mat-icon-button [disabled]="pageIndex == 0" (click)="prevAns();">
             <mat-icon  style="cursor: pointer;" >keyboard_arrow_right</mat-icon>
          </button>

@@ -39,6 +39,7 @@ export class CreateQuestionComponent implements OnInit {
     });
   }
   selectQuestion(numQ: number) {
+    this.quest= null;
     this.quest = this.questions.filter((x) => x.num_quest === numQ)[0];
   }
   addQuestion() {

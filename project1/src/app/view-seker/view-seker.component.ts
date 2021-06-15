@@ -82,10 +82,12 @@ export class ViewSekerComponent implements OnInit {
   }
 
   prevAns() {
+    this.quest = null;
     this.pageIndex--;
     this.quest = this.questions[this.pageIndex];
   }
   nextAns() {
+    this.quest = null;
     this.pageIndex++;
     this.quest = this.questions[this.pageIndex];
   }

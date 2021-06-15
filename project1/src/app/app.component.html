@@ -1,6 +1,6 @@
 <div class="breadcrumb">
-    <ul><a routerLink='/login' routerLinkActive="active_link">כניסה</a></ul>
-    <ul><a routerLink='/register' routerLinkActive="active_link">הרשמה</a></ul>
+    <ul><a routerLink='/login' *ngIf="!userLogin" routerLinkActive="active_link">כניסה</a></ul>
+    <ul><a routerLink='/register' *ngIf="!userLogin" routerLinkActive="active_link">הרשמה</a></ul>
     <ul><a routerLink='/skarim' *ngIf="userLogin" routerLinkActive="active_link">ניהול סקרים</a></ul>
     <ul><a routerLink='/asked' *ngIf="userLogin" routerLinkActive="active_link">ניהול נסקרים</a></ul>
     <ul><a routerLink='/results' *ngIf="userLogin" routerLinkActive="active_link">תוצאות סקרים</a></ul>

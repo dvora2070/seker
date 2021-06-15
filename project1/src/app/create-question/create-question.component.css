@@ -29,7 +29,7 @@ h3 {
 .q-wrapper {
     max-width: 250px;
     border: 1px solid;
-    height: 80px;
+    height: 100px;
     text-align: center;
     font-size: 16px;
     cursor: pointer;
@@ -64,10 +64,15 @@ h3 {
 }
 
 .card input[type="text"] {
-    width: 200px;
+    width: 280px;
     height: 24px;
 }
-
+.card textarea {
+    width: 200px;
+    display: block;
+    margin: auto;
+  
+}
 .card select {
     width: 210px;
     height: 30px;

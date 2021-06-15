@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, NgZone } from "@angular/core";
 import { ActivatedRoute, Params } from "@angular/router";
 import { environment } from "src/environments/environment";
 import Swal from "sweetalert2";
@@ -26,8 +26,8 @@ export class ViewSekerComponent implements OnInit {
   pageIndex = 0;
   constructor(
     private sekerService: SkarimService,
-    private route: ActivatedRoute
-  ) {}
+    private route: ActivatedRoute, private ngZone: NgZone
+  ) { }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
@@ -82,14 +82,20 @@ export class ViewSekerComponent implements OnInit {
   }
 
   prevAns() {
-    this.quest = null;
-    this.pageIndex--;
-    this.quest = this.questions[this.pageIndex];
+    this.ngZone.run(() => {
+
+      this.quest = null;
+      this.pageIndex--;
+      this.quest = this.questions[this.pageIndex];
+    })
+
   }
   nextAns() {
-    this.quest = null;
-    this.pageIndex++;
-    this.quest = this.questions[this.pageIndex];
+    this.ngZone.run(() => {
+      this.quest = null;
+      this.pageIndex++;
+      this.quest = this.questions[this.pageIndex];
+    })
   }
   saveSekerAskedId() {
     var ans = [];

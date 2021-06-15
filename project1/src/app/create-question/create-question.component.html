@@ -15,7 +15,9 @@
             <div class="card" *ngIf="quest">
                 <h3>שאלה מספר {{quest.num_quest}}</h3>
                 <label>השאלה</label><br>
-                <input type="text" [(ngModel)]="quest.text_quest">
+                <textarea rows="2" [(ngModel)]="quest.text_quest"></textarea>
+
+                <!-- <input type="text"> -->
                 <label>סוג השאלה</label><br>
                 <select [(ngModel)]="quest.type_ans" (ngModelChange)="changeAnswerType($event);">
                    <option *ngFor="let type of types" [value]="type.kod_type">{{type.name_type}}</option>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, NgZone, OnInit } from "@angular/core";
 import { ActivatedRoute, Params } from "@angular/router";
 import { Questions } from "../models/questions.model";
 import { TypeAnswers } from "../models/typeAnswers.model";
@@ -12,7 +12,8 @@ import Swal from "sweetalert2";
 export class CreateQuestionComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
-    private sekerService: SkarimService
+    private sekerService: SkarimService,
+    private ngZone: NgZone
   ) {}
   sekerId: number;
   questions: Questions[] = [];
@@ -39,8 +40,10 @@ export class CreateQuestionComponent implements OnInit {
     });
   }
   selectQuestion(numQ: number) {
-    this.quest= null;
-    this.quest = this.questions.filter((x) => x.num_quest === numQ)[0];
+    this.ngZone.run(() => {
+      this.quest = null;
+      this.quest = this.questions.filter((x) => x.num_quest === numQ)[0];
+    });
   }
   addQuestion() {
     var num = 1;
@@ -68,8 +71,7 @@ export class CreateQuestionComponent implements OnInit {
     this.quest.AnsOfQuest.push({
       kod_ans: 0,
       kod_quest: this.quest.kod_quest,
-      text_ans: ""
-      
+      text_ans: "",
     });
   }
   removeAns(ans) {

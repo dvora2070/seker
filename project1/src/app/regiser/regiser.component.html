@@ -19,7 +19,7 @@
             <small class="error" *ngIf="!newUser.email_user"> חובה להזין אימייל</small>
             <small class="error" *ngIf="email.hasError('pattern')"> אימייל לא תקין</small>
         </div>
-        <button class="btn-color" [disabled]="!newUser.email_user || !newUser.name_user || !newUser.password_user || email.hasError('pattern')" type="submit" (click)="OnRegister()">הרשמה</button>
+        <button class="btn-color" [disabled]="!newUser.email_user || !newUser.name_user || !newUser.password_user || email.hasError('pattern') || newUser.password_user.length < 4" type="submit" (click)="OnRegister()">הרשמה</button>
         <br><br>
     </div>
 </div>

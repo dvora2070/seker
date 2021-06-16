@@ -10,7 +10,7 @@ import { RegiserComponent } from './regiser/regiser.component';
 import { CreateSekerComponent } from './create-seker/create-seker.component';
 import { NgModule } from '@angular/core';
 import { CreateComponent } from './create/create.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SkarimComponent } from './skarim/skarim.component';
 import { AllSkarimComponent } from './all-skarim/all-skarim.component';
 import { AllUsersComponent } from './all-users/all-users.component';
@@ -19,6 +19,9 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SetAskedComponent } from './set-asked/set-asked.component';
 import { ViewSekerComponent } from './view-seker/view-seker.component';
+import { AuthInterceptor } from './_helpers/auth.interceptor';
+import { SpinnerOverlayComponent } from './spinner-overlay/spinner-overlay.component';
+import { MatProgressSpinnerModule, MatSpinner } from '@angular/material';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +35,8 @@ import { ViewSekerComponent } from './view-seker/view-seker.component';
     AllUsersComponent,
     SekerResultsComponent,
     SetAskedComponent,
-    ViewSekerComponent
+    ViewSekerComponent,
+    SpinnerOverlayComponent
   ],
   imports: [
     BrowserModule,
@@ -42,12 +46,20 @@ import { ViewSekerComponent } from './view-seker/view-seker.component';
     MatIconModule,
     MatDialogModule,
     BrowserAnimationsModule,
+    MatProgressSpinnerModule
 
     
-  ],entryComponents: [CreateSekerComponent,SetAskedComponent ],
+  ],entryComponents: [CreateSekerComponent,SetAskedComponent,SpinnerOverlayComponent ],
   providers: [  { provide: MAT_DIALOG_DATA, useValue: {} },
     { provide: MatDialogRef, useValue: {} },
-    {  provide: MAT_DATE_LOCALE, useValue: 'he-IL'},],
+    {  provide: MAT_DATE_LOCALE, useValue: 'he-IL'},
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+   
+
+   },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -8,11 +8,18 @@
     <br><input type="text" [(ngModel)]="asked.name_asked" required>
     <small class="error" *ngIf="!asked.name_asked"> חובה להזין שם</small>
     <label>מייל</label>
-    <br><input type="email" [(ngModel)]="asked.email_asked" required>
+    <br><input type="email" [(ngModel)]="asked.email_asked" #email="ngModel" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
     <small class="error" *ngIf="!asked.email_asked"> חובה להזין מייל</small>
+    <small class="error" *ngIf="email.hasError('pattern')"> אימייל לא תקין</small>
+
+
+
     <label>פלאפון</label>
-    <br><input type="tel" [(ngModel)]="asked.phone_asked" required>
+    <br><input type="text" [(ngModel)]="asked.phone_asked" #phone="ngModel" required pattern="[0][0-9]{9}">
     <small class="error" *ngIf="!asked.phone_asked"> חובה להזין פלאפון</small>
+    <small class="error" *ngIf="phone.hasError('pattern')"> פלאפון לא תקין</small>
+
     <br>
-    <button type="submit" class="btn-color" (click)="saveAsked()">שמור</button>
+    <button type="submit" class="btn-color" [disabled]="!asked.name_asked || !asked.email_asked || email.hasError('pattern')
+    || !asked.phone_asked || phone.hasError('pattern')" (click)="saveAsked()">שמור</button>
 </div>

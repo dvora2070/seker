@@ -21,8 +21,10 @@ const routes: Routes = [
  { path: 'seker/:id/:askedId', component: ViewSekerComponent },
  { path: 'asked', component: AllUsersComponent },
  { path: 'results', component: SekerResultsComponent },
-
- { path:'', component: RegiserComponent}];
+ {
+  path: '**', redirectTo: 'login'
+},
+ { path:'', component: LoginComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

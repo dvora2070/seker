@@ -48,7 +48,7 @@ export class AllSkarimComponent implements OnInit {
           )
           .subscribe((x) => {
             if (x) {
-              Swal.fire('', 'המייל/ים נשלחו בהצלחה', 'success');
+              Swal.fire('', 'המיילים נשלחו בהצלחה', 'success');
             }
           });
       } else if (result.dismiss === Swal.DismissReason.cancel) {

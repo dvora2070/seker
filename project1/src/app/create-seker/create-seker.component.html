@@ -32,45 +32,12 @@
     <img *ngIf="data.sekerId && seker && seker.logo_skr" [src]="serviceBase + seker.logo_skr" width="100" height="auto">
     <img *ngIf="(!data.sekerId || !seker|| !seker.logo_skr) && url" [src]="url" width="100" height="auto">
     <br>
-    <!-- <label> תמונת רקע</label>
-        <div class="custom-file-upload-wrapper">
 
-            <div class="custom-file-upload-name-wrapper">
-                <label class="custom-file-upload-name" *ngIf="file1">{{file1.name}}</label>
-                <label class="custom-file-upload-name" *ngIf="!file1">לא נבחרה תמונה</label>
-            </div>
-            <label class="custom-file-upload" for="file-input2">
-              <mat-icon>insert_drive_file</mat-icon>
-              <input type="file"/>
-              טען תמונה
-            </label>
-        </div>
 
-        <input id="file-input2" type="file" (change)="onSelectFile1($event)" accept="image/*" />
-        <img *ngIf="data.sekerId && seker && seker.jpg_skr" [src]="serviceBase + seker.jpg_skr" width="100" height="auto">
-        <img *ngIf="(!data.sekerId || !seker|| !seker.jpg_skr) && url1" [src]="url1" width="100" height="auto">
-        <br> -->
     <label style="margin-left: 10px;">צבע רקע </label> <br>
     <input type="color" [(ngModel)]="seker.bgcolor_skr">
     <label style="margin-left: 10px;">צבע כתב</label> <br>
     <input type="color" [(ngModel)]="seker.fountcolor_skr">
     <br>
-    <button type="submit" class="btn-color" (click)="addSeker()">שמור</button>
+    <button type="submit" class="btn-color" [disabled]="!seker.name_skr" (click)="addSeker()">שמור</button>
 </div>
-
-
-
-
-<!-- enter background:  <input [disabled]="isDisabled" type="color"  [(ngModel)]="colorSeker.gcolor"><br><br>
-enter fount color: <input type="color"  [(ngModel)]="colorSeker.fcolor"><br><br>
-<input type="text" [(ngModel)]="colorSeker.text">
-<div><input type="radio" class="inputDesign" name="1">number 1</div><br><br>
-<div><input type="radio" class="inputDesign" name="1">number 2</div><br><br>
-<div><input type="radio" class="inputDesign" name="1">number 3</div><br><br>
-<div>
-    <input type="button" value="create" routerLink="/create/">
-</div>
-<br><br> -->
-
-<!-- <input [disabled]="colorSeker.gcolor != ''" type="file" (change)="onSelectFile($event)">
-<input height="50px" type="file" (change)="onSelectFile1($event)"> -->

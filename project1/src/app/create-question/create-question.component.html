@@ -13,7 +13,7 @@
         <div class="col-6">
 
             <div class="card" *ngIf="quest">
-                <h3>שאלה מספר {{quest.num_quest}}</h3>
+                <h3>שאלה מספר  <strong [textContent]="quest.num_quest"></strong></h3>
                 <label>השאלה</label><br>
                 <textarea rows="2" [(ngModel)]="quest.text_quest"></textarea>
 

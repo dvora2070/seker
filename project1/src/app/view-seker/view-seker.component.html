@@ -6,9 +6,9 @@
     <div *ngIf="!notRelevantSeker">
         <div class="card" *ngIf="quest">
             <h3 style="padding-right: 10px" [style.background-color]="seker.fountcolor_skr" [style.color]="seker.bgcolor_skr">
-                שאלה מספר {{ quest.num_quest }}
+                שאלה מספר  <strong [textContent]="quest.num_quest"></strong>
             </h3>
-            <label>{{ quest.text_quest }}</label>
+            <label [textContent]="quest.text_quest"></label>
             <small class="error" *ngIf="quest && quest.ismust_quest">*חובה</small>
             <br />
             <div class="ans-wrapper" *ngIf="quest.type_ans != 1">

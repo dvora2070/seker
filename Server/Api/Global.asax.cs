@@ -13,7 +13,7 @@ namespace Api
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
-            Timer timer = new Timer(9000000);
+            Timer timer = new Timer(259200000);
 
             timer.Enabled = true;
 

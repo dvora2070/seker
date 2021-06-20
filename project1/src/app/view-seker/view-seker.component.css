@@ -96,8 +96,7 @@ mat-icon {
     left: 0;
     background-size: contain;
     background-image: none;
-    background-color: white
-    ;
+    background-color: white;
     /* background-image: url('../../assets/bg4.png'); */
     opacity: 1;
     z-index: 0;
@@ -143,4 +142,18 @@ h1 {
 
 button:focus-visible {
     outline: none;
+}
+
+.footer-div {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.tnx {
+    margin-right: -90px;
+    font-size: 22px;
+    margin-top: 20px;
 }

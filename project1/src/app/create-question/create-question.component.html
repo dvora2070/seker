@@ -33,7 +33,8 @@
                     <mat-icon (click)="addAnswer()" class="icon-add-answers">add_circle_outline</mat-icon>
                     <div *ngFor="let ans of quest.AnsOfQuest; let i = index">
                         <label>תשובה {{i+1}}</label>
-                        <input type="text" [(ngModel)]="ans.text_ans">
+                        <textarea rows="2" [(ngModel)]="ans.text_ans"></textarea>
+                        <!-- <input type="text" [(ngModel)]="ans.text_ans"> -->
                         <mat-icon (click)="removeAns(ans);">close</mat-icon>
 
                     </div>

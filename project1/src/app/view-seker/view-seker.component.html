@@ -43,7 +43,7 @@
             <button class="btn-color" style="display: inline-block;" *ngIf="pageIndex == questions.length -1" [style.background-color]="seker.fountcolor_skr" [style.color]="seker.bgcolor_skr" (click)="saveSekerAskedId();">
             סיום סקר
         </button>
-
+            <h5 *ngIf="pageIndex == questions.length -1" class="tnx" [style.color]="seker.fountcolor_skr"> תודה שהקדשת מזמנך לענות על הסקר!</h5>
         </div>
     </div>
     <div *ngIf="notRelevantSeker" style="text-align: center;">
@@ -51,4 +51,5 @@
 
         <h2> הסקר נגמר - מחכים לך בסקר הבא...</h2>
     </div>
+    <div [style.color]="seker.fountcolor_skr" class="footer-div"> מופעל ע"י מערכת ממוחשבת ליצירת סקרים. כל הזכויות שמורות לדסקריט</div>
 </div>

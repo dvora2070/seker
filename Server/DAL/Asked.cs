@@ -24,8 +24,10 @@ namespace DAL
         public string name_asked { get; set; }
         public string email_asked { get; set; }
         public string phone_asked { get; set; }
+        public int kod_user { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AnsOfAsked> AnsOfAsked { get; set; }
+        public virtual Users Users { get; set; }
     }
 }

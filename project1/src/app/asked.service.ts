@@ -23,8 +23,10 @@ export class AskedService {
     );
   }
 
-  getAllAsked() {
-    return this.http.get<Asked[]>(this.apiUrl + "/api/Asked/getallAsked");
+  getAllAsked(userId: number) {
+    return this.http.get<Asked[]>(
+      this.apiUrl + "/api/Asked/getallAsked/" + userId
+    );
   }
   getAskedById(id: number) {
     return this.http.get<Asked>(this.apiUrl + "/api/Asked/getAskedById/" + id);

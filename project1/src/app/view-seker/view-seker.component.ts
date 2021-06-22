@@ -26,8 +26,9 @@ export class ViewSekerComponent implements OnInit {
   pageIndex = 0;
   constructor(
     private sekerService: SkarimService,
-    private route: ActivatedRoute, private ngZone: NgZone
-  ) { }
+    private route: ActivatedRoute,
+    private ngZone: NgZone
+  ) {}
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
@@ -38,16 +39,17 @@ export class ViewSekerComponent implements OnInit {
     });
   }
   getQuestionBySekerAndAskedId() {
-    this.sekerService.getAskedById(this.askedId).subscribe((x) => {
-      this.asked = x;
-    });
-
+    if (this.askedId !== 0) {
+      this.sekerService.getAskedById(this.askedId).subscribe((x) => {
+        this.asked = x;
+      });
+    }
     this.sekerService.getSkarimById(this.sekerId).subscribe((x) => {
       this.seker = x;
-      if (
+      if ((
         new Date(this.seker.startdate_skr) > new Date() ||
         new Date(this.seker.lastdate_skr) < new Date()
-      )
+      ) && this.askedId !== 0)
         this.notRelevantSeker = true;
     });
     this.sekerService.getQuestionsBySekerId(this.sekerId).subscribe((x) => {
@@ -83,19 +85,17 @@ export class ViewSekerComponent implements OnInit {
 
   prevAns() {
     this.ngZone.run(() => {
-
       this.quest = null;
       this.pageIndex--;
       this.quest = this.questions[this.pageIndex];
-    })
-
+    });
   }
   nextAns() {
     this.ngZone.run(() => {
       this.quest = null;
       this.pageIndex++;
       this.quest = this.questions[this.pageIndex];
-    })
+    });
   }
   saveSekerAskedId() {
     var ans = [];

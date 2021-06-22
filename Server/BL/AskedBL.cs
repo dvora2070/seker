@@ -11,11 +11,11 @@ namespace BL
 {
     public class AskedBL
     {
-        public static List<AskedDto> getAllAsked()
+        public static List<AskedDto> getAllAsked(int userId)
         {
             using (project_skrEntities db = new project_skrEntities())
             {
-                var asked = db.Asked.ToList();
+                var asked = db.Asked.Where(x => x.kod_user == userId).ToList();
                 return AskedConvertion.convertToListDto(asked);
             }
         }
@@ -24,7 +24,7 @@ namespace BL
         {
             using (project_skrEntities db = new project_skrEntities())
             {
-                var asked = db.Asked.FirstOrDefault(x=>x.kod_asked == id);
+                var asked = db.Asked.FirstOrDefault(x => x.kod_asked == id);
                 return AskedConvertion.convertToDto(asked);
             }
         }
@@ -40,7 +40,8 @@ namespace BL
                 {
                     email_asked = ask.email_asked,
                     name_asked = ask.name_asked,
-                    phone_asked = ask.phone_asked
+                    phone_asked = ask.phone_asked,
+                    kod_user =ask.kod_user
                 };
                 db.Asked.Add(newask);
                 db.SaveChanges();

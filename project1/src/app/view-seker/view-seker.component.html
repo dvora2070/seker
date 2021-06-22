@@ -6,7 +6,7 @@
     <div *ngIf="!notRelevantSeker">
         <div class="card" *ngIf="quest">
             <h3 style="padding-right: 10px" [style.background-color]="seker.fountcolor_skr" [style.color]="seker.bgcolor_skr">
-                שאלה מספר  <strong [textContent]="quest.num_quest"></strong>
+                שאלה מספר <strong [textContent]="quest.num_quest"></strong>
             </h3>
             <label [textContent]="quest.text_quest"></label>
             <small class="error" *ngIf="quest && quest.ismust_quest">*חובה</small>
@@ -32,7 +32,7 @@
             <mat-icon  style="cursor: pointer;" >keyboard_arrow_right</mat-icon>
          </button>
             <button mat-icon-button [disabled]="pageIndex == questions.length -1
-        || (quest.ismust_quest && ((!quest.AnsOfAsked[0].answer && 
+        || (askedId != 0 && quest.ismust_quest && ((!quest.AnsOfAsked[0].answer && 
         
         quest.type_ans == 1) || (!quest.AnsOfAsked[0].kod_ans && 
         
@@ -40,13 +40,15 @@
             <mat-icon  style="cursor: pointer;" >keyboard_arrow_left</mat-icon>
          </button>
             <br><br>
-            <button class="btn-color" style="display: inline-block;" *ngIf="pageIndex == questions.length -1" [style.background-color]="seker.fountcolor_skr" [style.color]="seker.bgcolor_skr" (click)="saveSekerAskedId();">
+            <button class="btn-color" style="display: inline-block;" *ngIf="pageIndex == questions.length -1 && askedId!=0" [style.background-color]="seker.fountcolor_skr" [style.color]="seker.bgcolor_skr" (click)="saveSekerAskedId();">
             סיום סקר
         </button>
-            <h5 *ngIf="pageIndex == questions.length -1" class="tnx" [style.color]="seker.fountcolor_skr"> תודה שהקדשת מזמנך לענות על הסקר!</h5>
+            <h5 *ngIf="pageIndex == questions.length -1&& askedId!=0" class="tnx" [style.color]="seker.fountcolor_skr"> תודה שהקדשת מזמנך לענות על הסקר!</h5>
+            <h2 *ngIf="pageIndex == questions.length -1&& askedId==0" [style.color]="seker.fountcolor_skr"> סיום הסקר!</h2>
+
         </div>
     </div>
-    <div *ngIf="notRelevantSeker" style="text-align: center;">
+    <div *ngIf="notRelevantSeker && askedId!=0" style="text-align: center;">
         <br>
 
         <h2> הסקר נגמר - מחכים לך בסקר הבא...</h2>

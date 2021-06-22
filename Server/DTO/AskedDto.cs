@@ -12,5 +12,6 @@ namespace DTO
         public string name_asked { get; set; }
         public string email_asked { get; set; }
         public string phone_asked { get; set; }
+        public int kod_user { get; set; }
     }
 }

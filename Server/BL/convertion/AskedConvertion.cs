@@ -17,6 +17,7 @@ namespace BL.convertion
             newAsked.name_asked = a.name_asked;
             newAsked.email_asked = a.email_asked;
             newAsked.phone_asked = a.phone_asked;
+            newAsked.kod_user = a.kod_user;
             return newAsked;
         }
 
@@ -37,6 +38,7 @@ namespace BL.convertion
             newAsked.name_asked = a.name_asked;
             newAsked.email_asked = a.email_asked;
             newAsked.phone_asked = a.phone_asked;
+            newAsked.kod_user = a.kod_user;
             return newAsked;
 
         }

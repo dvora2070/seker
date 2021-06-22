@@ -9,7 +9,6 @@ import { LoginComponent } from './login/login.component';
 import { RegiserComponent } from './regiser/regiser.component';
 import { CreateSekerComponent } from './create-seker/create-seker.component';
 import { NgModule } from '@angular/core';
-import { CreateComponent } from './create/create.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SkarimComponent } from './skarim/skarim.component';
 import { AllSkarimComponent } from './all-skarim/all-skarim.component';
@@ -29,7 +28,6 @@ import { MatProgressSpinnerModule, MatSpinner } from '@angular/material';
     LoginComponent,
     RegiserComponent,
     CreateSekerComponent,
-    CreateComponent,
     SkarimComponent,
     AllSkarimComponent,
     AllUsersComponent,

@@ -12,10 +12,10 @@ namespace Api.Controllers
     public class AskedController : ApiController
     {
         [HttpGet]
-        [Route("GetAllAsked")]
-        public IHttpActionResult GetAllAsked()
+        [Route("GetAllAsked/{userId}")]
+        public IHttpActionResult GetAllAsked(int userId)
         {
-            return Ok(AskedBL.getAllAsked());
+            return Ok(AskedBL.getAllAsked(userId));
         }
 
 

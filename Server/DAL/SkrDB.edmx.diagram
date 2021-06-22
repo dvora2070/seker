@@ -5,17 +5,18 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="5e9da60efb8f4a82afc70ad0059592c4" Name="Diagram1" ZoomLevel="86">
-        <EntityTypeShape EntityType="project_skrModel.AnsOfAsked" Width="1.5" PointX="9.75" PointY="3.75" />
-        <EntityTypeShape EntityType="project_skrModel.AnsOfQuest" Width="1.5" PointX="7.5" PointY="5.75" />
-        <EntityTypeShape EntityType="project_skrModel.Asked" Width="1.5" PointX="7.5" PointY="3" />
-        <EntityTypeShape EntityType="project_skrModel.Questions" Width="1.5" PointX="5.25" PointY="2.125" />
-        <EntityTypeShape EntityType="project_skrModel.Skarim" Width="1.5" PointX="3" PointY="2" />
-        <EntityTypeShape EntityType="project_skrModel.TypeAnswers" Width="1.5" PointX="3" PointY="7.875" />
-        <EntityTypeShape EntityType="project_skrModel.Users" Width="1.5" PointX="0.75" PointY="2.625" />
+        <EntityTypeShape EntityType="project_skrModel.AnsOfAsked" Width="1.5" PointX="5.25" PointY="1.125" />
+        <EntityTypeShape EntityType="project_skrModel.AnsOfQuest" Width="1.5" PointX="7.5" PointY="4.875" />
+        <EntityTypeShape EntityType="project_skrModel.Asked" Width="1.5" PointX="3" PointY="1.125" />
+        <EntityTypeShape EntityType="project_skrModel.Questions" Width="1.5" PointX="5.25" PointY="4.375" />
+        <EntityTypeShape EntityType="project_skrModel.Skarim" Width="1.5" PointX="3" PointY="4.25" />
+        <EntityTypeShape EntityType="project_skrModel.TypeAnswers" Width="1.5" PointX="3" PointY="9" />
+        <EntityTypeShape EntityType="project_skrModel.Users" Width="1.5" PointX="0.75" PointY="3.125" />
         <AssociationConnector Association="project_skrModel.FK__AnsOfAske__kod_a__300424B4" />
         <AssociationConnector Association="project_skrModel.FK__AnsOfAske__kod_a__30F848ED" />
         <AssociationConnector Association="project_skrModel.FK__AnsOfAske__kod_q__31EC6D26" />
         <AssociationConnector Association="project_skrModel.FK__AnsOfQues__kod_q__32E0915F" />
+        <AssociationConnector Association="project_skrModel.FK_UserAsked" />
         <AssociationConnector Association="project_skrModel.FK__Questions__kod_s__33D4B598" />
         <AssociationConnector Association="project_skrModel.FK__Questions__type___34C8D9D1" />
         <AssociationConnector Association="project_skrModel.FK__Skarim__kod_user__35BCFE0A" />

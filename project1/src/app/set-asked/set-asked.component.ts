@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import Swal from "sweetalert2";
 import { AskedService } from "../asked.service";
 import { Asked } from "../models/asked.model";
+import { Users } from "../models/user.model";
 
 @Component({
   selector: "app-set-asked",
@@ -11,7 +12,7 @@ import { Asked } from "../models/asked.model";
 })
 export class SetAskedComponent implements OnInit {
   asked = new Asked();
-
+  userId:number;
   constructor(
     private askedService: AskedService,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -19,6 +20,8 @@ export class SetAskedComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    var user = <Users>JSON.parse(localStorage.getItem("user"));
+    this.userId = user.kod_user;
     if (this.data && this.data.askedId) {
       this.askedService.getAskedById(+this.data.askedId).subscribe((x) => {
         this.asked = x;
@@ -33,6 +36,7 @@ export class SetAskedComponent implements OnInit {
         this.close();
       });
     } else {
+      this.asked.kod_user = this.userId;
       this.askedService.addAsked(this.asked).subscribe((x) => {
         Swal.fire("", "השמירה בוצעה בהצלחה!", "success");
         this.close();

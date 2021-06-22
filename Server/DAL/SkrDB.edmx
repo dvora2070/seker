@@ -31,6 +31,7 @@
           <Property Name="name_asked" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="email_asked" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="phone_asked" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="kod_user" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Questions">
           <Key>
@@ -157,6 +158,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_UserAsked">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Asked" Type="Self.Asked" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="kod_user" />
+            </Principal>
+            <Dependent Role="Asked">
+              <PropertyRef Name="kod_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="project_skrModelStoreContainer">
           <EntitySet Name="AnsOfAsked" EntityType="Self.AnsOfAsked" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AnsOfQuest" EntityType="Self.AnsOfQuest" Schema="dbo" store:Type="Tables" />
@@ -193,6 +206,10 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Skarim" EntitySet="Skarim" />
           </AssociationSet>
+          <AssociationSet Name="FK_UserAsked" Association="Self.FK_UserAsked">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Asked" EntitySet="Asked" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -221,6 +238,10 @@
           <AssociationSet Name="FK__AnsOfQues__kod_q__32E0915F" Association="project_skrModel.FK__AnsOfQues__kod_q__32E0915F">
             <End Role="Questions" EntitySet="Questions" />
             <End Role="AnsOfQuest" EntitySet="AnsOfQuest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAsked" Association="project_skrModel.FK_UserAsked">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Asked" EntitySet="Asked" />
           </AssociationSet>
           <AssociationSet Name="FK__Questions__kod_s__33D4B598" Association="project_skrModel.FK__Questions__kod_s__33D4B598">
             <End Role="Skarim" EntitySet="Skarim" />
@@ -266,7 +287,9 @@
           <Property Name="name_asked" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="email_asked" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="phone_asked" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="kod_user" Type="Int32" Nullable="false" />
           <NavigationProperty Name="AnsOfAsked" Relationship="project_skrModel.FK__AnsOfAske__kod_a__300424B4" FromRole="Asked" ToRole="AnsOfAsked" />
+          <NavigationProperty Name="Users" Relationship="project_skrModel.FK_UserAsked" FromRole="Asked" ToRole="Users" />
         </EntityType>
         <EntityType Name="Questions">
           <Key>
@@ -315,6 +338,7 @@
           <Property Name="name_user" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="password_user" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="email_user" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Asked" Relationship="project_skrModel.FK_UserAsked" FromRole="Users" ToRole="Asked" />
           <NavigationProperty Name="Skarim" Relationship="project_skrModel.FK__Skarim__kod_user__35BCFE0A" FromRole="Users" ToRole="Skarim" />
         </EntityType>
         <Association Name="FK__AnsOfAske__kod_a__300424B4">
@@ -362,6 +386,18 @@
             </Principal>
             <Dependent Role="AnsOfQuest">
               <PropertyRef Name="kod_quest" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAsked">
+          <End Type="project_skrModel.Users" Role="Users" Multiplicity="1" />
+          <End Type="project_skrModel.Asked" Role="Asked" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="kod_user" />
+            </Principal>
+            <Dependent Role="Asked">
+              <PropertyRef Name="kod_user" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -429,6 +465,7 @@
           <EntitySetMapping Name="Asked">
             <EntityTypeMapping TypeName="project_skrModel.Asked">
               <MappingFragment StoreEntitySet="Asked">
+                <ScalarProperty Name="kod_user" ColumnName="kod_user" />
                 <ScalarProperty Name="phone_asked" ColumnName="phone_asked" />
                 <ScalarProperty Name="email_asked" ColumnName="email_asked" />
                 <ScalarProperty Name="name_asked" ColumnName="name_asked" />

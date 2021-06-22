@@ -3,6 +3,7 @@ import { MatDialog } from "@angular/material";
 import Swal from "sweetalert2";
 import { AskedService } from "../asked.service";
 import { Asked } from "../models/asked.model";
+import { Users } from "../models/user.model";
 import { SetAskedComponent } from "../set-asked/set-asked.component";
 
 @Component({
@@ -14,6 +15,7 @@ export class AllUsersComponent implements OnInit {
   asked: Asked[] = [];
   public records: any[] = [];
   file: File;
+  userId:number;
   @ViewChild("csvReader", null) csvReader: any;
 
   uploadListener($event: any): void {
@@ -62,7 +64,7 @@ export class AllUsersComponent implements OnInit {
         csvRecord.email_asked = curruntRecord[0].trim();
         csvRecord.name_asked = curruntRecord[1].trim();
         csvRecord.phone_asked = curruntRecord[2].trim();
-
+        csvRecord.kod_user =this.userId;
         csvArr.push(csvRecord);
       }
     }
@@ -89,11 +91,13 @@ export class AllUsersComponent implements OnInit {
   constructor(private askedService: AskedService, public dialog: MatDialog) {}
 
   getAllAsked() {
-    this.askedService.getAllAsked().subscribe((x) => {
+    this.askedService.getAllAsked(this.userId).subscribe((x) => {
       this.asked = x;
     });
   }
   ngOnInit() {
+    var user = <Users>JSON.parse(localStorage.getItem("user"));
+    this.userId = user.kod_user;
     this.getAllAsked();
   }
 

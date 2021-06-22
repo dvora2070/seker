@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material";
+import { Router } from "@angular/router";
 import { environment } from "src/environments/environment";
 import Swal from "sweetalert2";
 import { CreateSekerComponent } from "../create-seker/create-seker.component";
@@ -16,45 +17,56 @@ export class AllSkarimComponent implements OnInit {
   skarim: Skarim[] = [];
   baseUrl = environment.apiUrl + "/images/";
   userId: number;
-  constructor(private sekerService: SkarimService, public dialog: MatDialog) {}
+  constructor(
+    private sekerService: SkarimService,
+    public dialog: MatDialog,
+    private route: Router
+  ) {}
 
   ngOnInit() {
-   var user =  <Users>(JSON.parse( localStorage.getItem("user")));
-   this.userId = user.kod_user;
-   this.getSkarim();
-   
+    var user = <Users>JSON.parse(localStorage.getItem("user"));
+    this.userId = user.kod_user;
+    this.getSkarim();
   }
-  getSkarim(){
-    this.sekerService.getSkarimByUserId(  this.userId).subscribe((x) => {
+  getSkarim() {
+    this.sekerService.getSkarimByUserId(this.userId).subscribe((x) => {
       this.skarim = x;
-   
     });
-
   }
 
-  sendSeker(sekerId){
+  sendSeker(sekerId) {
     Swal.fire({
-      title: '',
-      text: 'האם את/ה בטוח/ה שאת/ה רוצה להפיץ את הסקר?',
-      icon: 'question',
+      title: "",
+      text: "האם את/ה בטוח/ה שאת/ה רוצה להפיץ את הסקר?",
+      icon: "question",
       showCancelButton: true,
-      confirmButtonText: 'כן',
-      cancelButtonText: 'לא',
+      confirmButtonText: "כן",
+      cancelButtonText: "לא",
     }).then((result) => {
       if (result.value) {
-        this.sekerService
-          .sendSeker(
-            sekerId
-          )
-          .subscribe((x) => {
-            if (x) {
-              Swal.fire('', 'המיילים נשלחו בהצלחה', 'success');
-            }
-          });
+        this.sekerService.sendSeker(sekerId).subscribe((x) => {
+          if (x) {
+            Swal.fire("", "המיילים נשלחו בהצלחה", "success");
+          }
+        });
       } else if (result.dismiss === Swal.DismissReason.cancel) {
       }
     });
+  }
 
+  ViewSeker(sekerId) {
+    this.route.navigateByUrl("seker/" + sekerId + "/0");
+  }
+  checkSekerDates(seker) {
+    if (
+      new Date(seker.startdate_skr) > new Date() ||
+      new Date(seker.lastdate_skr) < new Date()
+    ) {
+      return false;
+    }
+    else{
+      return true;
+    }
   }
   openDialog(sekerId?: number) {
     const dialogRef = this.dialog.open(CreateSekerComponent, {
@@ -64,7 +76,7 @@ export class AllSkarimComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
+      console.log("The dialog was closed");
       this.getSkarim();
     });
   }
